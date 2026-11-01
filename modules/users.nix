@@ -3,6 +3,6 @@
 {
   users.users.salahuddin = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "bluetooth" ];
+    extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" ];
   };
 }
