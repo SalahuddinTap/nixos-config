@@ -8,7 +8,7 @@
     fastfetch
     btop
     eza
-    rofi-wayland
+    rofi
   ];
 
   programs.waybar.enable = true;
