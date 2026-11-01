@@ -10,6 +10,7 @@
     ./modules/desktop.nix
     ./modules/virtualisation.nix
     ./modules/users.nix
+    ./modules/fan.nix
   ];
 
   # Additional system packages (non-desktop)

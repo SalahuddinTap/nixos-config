@@ -1,0 +1,25 @@
+{ config, pkgs, ... }:
+
+{
+  # Raw EC access for fan control on the MSI GF63 Thin 11UC.
+  # The in-kernel msi-ec driver only whitelists EC fw 16R6EMS1.104; this machine
+  # has 16R6EMS1.10E, so msi-ec never creates /sys/devices/platform/msi-ec.
+  # ec_sys exposes raw EC memory at /sys/kernel/debug/ec/ec0/io instead.
+  boot.kernelModules = [ "ec_sys" ];
+  boot.extraModprobeConfig = ''
+    options ec_sys write_support=1
+  '';
+
+  # Applies the fan profile stored in ~/projects/cmds/boot/profile at boot.
+  # Managed with: ~/projects/cmds/boot/set-boot.sh {max|middle|silent|off|status}
+  systemd.services.msi-fan-boot = {
+    description = "Apply MSI fan profile at boot";
+    after = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      type = "oneshot";
+      remainAfterExit = true;
+      execStart = "/home/salahuddin/projects/cmds/boot/apply-boot-profile.sh";
+    };
+  };
+}
