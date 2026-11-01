@@ -19,7 +19,14 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "/home/salahuddin/projects/cmds/boot/apply-boot-profile.sh";
+      # systemd services have a minimal PATH on NixOS (no /usr/bin), so use
+      # store paths explicitly and give the script its runtime tools.
+      ExecStart = "${pkgs.bash}/bin/bash /home/salahuddin/projects/cmds/boot/apply-boot-profile.sh";
+      Path = [
+        "${pkgs.bash}/bin"
+        "${pkgs.coreutils}/bin"
+        "${pkgs.kmod}/bin"
+      ];
     };
   };
 }
