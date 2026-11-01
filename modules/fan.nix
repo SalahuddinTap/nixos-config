@@ -17,9 +17,9 @@
     after = [ "multi-user.target" ];
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      type = "oneshot";
-      remainAfterExit = true;
-      execStart = "/home/salahuddin/projects/cmds/boot/apply-boot-profile.sh";
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "/home/salahuddin/projects/cmds/boot/apply-boot-profile.sh";
     };
   };
 }
