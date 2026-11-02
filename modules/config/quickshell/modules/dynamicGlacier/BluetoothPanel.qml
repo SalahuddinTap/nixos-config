@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Bluetooth
+import "."
 
 Item {
     id: root

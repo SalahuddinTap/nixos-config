@@ -1,4 +1,5 @@
 import QtQuick
+import "."
 
 // A small floating tray indicator chip or circle.
 // Dismissable on click. Reappears when `dismissed` is reset externally.
