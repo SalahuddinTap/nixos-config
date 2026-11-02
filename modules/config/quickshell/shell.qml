@@ -5,7 +5,6 @@
 import QtQuick
 import Quickshell
 import Quickshell.Hyprland
-import "modules/dynamicGlacier"
 import "bars/hyprminimal"
 import "bars/anomshell"
 
@@ -23,11 +22,6 @@ ShellRoot {
     }
 
     Component {
-        id: dynamicGlacierComponent
-        DynamicGlacier {}
-    }
-
-    Component {
         id: hyprminimalComponent
         HyprMinimal {}
     }
@@ -36,6 +30,14 @@ ShellRoot {
         id: anomshellComponent
         AnomshellFlat {
             hyprMonitor: Hyprland.monitorFor(Screen.primary)
+        }
+    }
+
+    // DynamicGlacier loaded on-demand to avoid missing Qt5Compat.GraphicalEffects dependency
+    Component {
+        id: dynamicGlacierComponent
+        Loader {
+            source: "modules/dynamicGlacier/DynamicGlacier.qml"
         }
     }
 
