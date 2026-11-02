@@ -6,8 +6,6 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import "bars/anomshell"
-import "bars/hyprminimal"
-import "modules/dynamicGlacier"
 
 ShellRoot {
     id: root
@@ -22,7 +20,6 @@ ShellRoot {
             width: 1; height: 1
 
             Loader {
-                id: barLoader
                 active: true
                 sourceComponent: {
                     if (root.activeBar === "anomshell") return anomshellComp
@@ -40,14 +37,15 @@ ShellRoot {
         }
     }
 
+    // Loaded via source string to avoid QML validation of broken Config singleton
     Component {
         id: hyprminimalComp
-        HyprMinimal {}
+        Loader { source: "bars/hyprminimal/HyprMinimal.qml" }
     }
 
     Component {
         id: dynamicGlacierComp
-        DynamicGlacier {}
+        Loader { source: "modules/dynamicGlacier/DynamicGlacier.qml" }
     }
 
     Component.onCompleted: {
