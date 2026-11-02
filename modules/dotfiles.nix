@@ -51,5 +51,11 @@
       source = ./config/mimeapps.list;
       force = true;
     };
+
+    # Nerd Font (JetBrains Mono) for icon glyphs
+    ".config/fontconfig/conf.d/10-nerdfonts.conf" = {
+      source = ./config/fontconfig/nerdfonts.conf;
+      force = true;
+    };
   };
 }
