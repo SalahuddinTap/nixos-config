@@ -57,5 +57,11 @@
       source = ./config/fontconfig/nerdfonts.conf;
       force = true;
     };
+
+    # Qt5Compat for dynamicglacier bar
+    ".config/environment.d/20-qt5compat.conf" = {
+      source = ./config/environment.d/20-qt5compat.conf;
+      force = true;
+    };
   };
 }
