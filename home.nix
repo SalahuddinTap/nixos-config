@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./modules/dotfiles.nix
+  ];
+
   home.username = "salahuddin";
   home.homeDirectory = "/home/salahuddin";
 

@@ -14,6 +14,7 @@
 
   # Desktop packages
   environment.systemPackages = with pkgs; [
+    pi-coding-agent
     waybar
     kdePackages.dolphin
     rofi

@@ -23,9 +23,11 @@
   # Additional system packages (non-desktop)
   environment.systemPackages = with pkgs; [
     git
+
     vscode
     wget
     fastfetch
+    spotify
     spicetify-cli
   ];
 }
