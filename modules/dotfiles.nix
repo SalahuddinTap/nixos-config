@@ -75,6 +75,13 @@
       force = true;
     };
 
+    # kari PiP — Super+P toggle (float + pin corner for mpv)
+    ".local/bin/kari-pip.sh" = {
+      source = ./config/scripts/kari-pip.sh;
+      executable = true;
+      force = true;
+    };
+
     # Rofi theme (Vanta Black)
     ".config/rofi/theme.rasi" = {
       source = ./config/rofi/theme.rasi;

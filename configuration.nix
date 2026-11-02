@@ -37,6 +37,8 @@
     cliphist            # Clipboard history manager (stores history, works with rofi)
     spotube              # Spotify replacement (open-source client)
     floorp-bin           # Firefox-based browser (Zen Browser alternative)
+    mpv                  # Video player (for kari PiP)
+    jq                   # For kari-pip script JSON parsing
     # LSP servers (NixOS-native, work without patchelf)
     lua-language-server
     pyright
