@@ -735,7 +735,7 @@ Item {
                         text: root.trackTitle
                         color: root.strongText
                         font.pixelSize: 11
-                        font.family: "JetBrains Mono"
+                        font.family: "JetBrainsMono Nerd Font Mono"
                         font.weight: Font.DemiBold
                         elide: Text.ElideRight
                     }
@@ -745,7 +745,7 @@ Item {
                         text: root.trackArtist !== "" ? root.trackArtist : (root.trackAlbum !== "" ? root.trackAlbum : "Media")
                         color: root.mutedText
                         font.pixelSize: 9
-                        font.family: "JetBrains Mono"
+                        font.family: "JetBrainsMono Nerd Font Mono"
                         elide: Text.ElideRight
                     }
 
@@ -754,7 +754,7 @@ Item {
                         text: root.elapsedLabel + " / " + root.durationLabel
                         color: root.softText
                         font.pixelSize: 10
-                        font.family: "JetBrains Mono"
+                        font.family: "JetBrainsMono Nerd Font Mono"
                     }
 
                     Item {

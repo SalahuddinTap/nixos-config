@@ -5,7 +5,7 @@
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   # NVIDIA proprietary drivers
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ]; 
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -13,7 +13,4 @@
     nvidiaSettings = true;
     package = pkgs.linuxPackages_cachyos.nvidiaPackages.stable;
   };
-
-  # Chaotic NYX cache (prebuilt packages for cachyos)
-  chaotic.nyx.cache.enable = true;
 }

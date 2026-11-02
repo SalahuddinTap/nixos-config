@@ -22,13 +22,26 @@
 
   # Additional system packages (non-desktop)
   environment.systemPackages = with pkgs; [
+    fish
     git
     yazi
     ghostty
+    neovim
     vscode
     wget
     fastfetch
     spotify
     spicetify-cli
+    brave               # Brave browser
+    wl-clipboard        # wl-copy, wl-paste for Wayland clipboard
+    cliphist            # Clipboard history manager (stores history, works with rofi)
+    # LSP servers (NixOS-native, work without patchelf)
+    lua-language-server
+    pyright
+    typescript-language-server
+    vscode-langservers-extracted  # json, css, html
+    yaml-language-server
+    bash-language-server
+    nil                   # Nix LSP
   ];
 }

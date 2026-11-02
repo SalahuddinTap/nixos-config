@@ -33,7 +33,7 @@ Item {
             text:           label
             color:          hovered ? accent : textColor
             font.pixelSize: 10
-            font.family:    "JetBrains Mono"
+            font.family:    "JetBrainsMono Nerd Font Mono"
             opacity:        hovered ? 1.0 : 0.5
 
             Behavior on color   { ColorAnimation { duration: 200 } }
@@ -128,7 +128,7 @@ Item {
             text:           Math.round(value) + "%"
             color:          accent
             font.pixelSize: 10
-            font.family:    "JetBrains Mono"
+            font.family:    "JetBrainsMono Nerd Font Mono"
 
             Behavior on color { ColorAnimation { duration: 300 } }
         }

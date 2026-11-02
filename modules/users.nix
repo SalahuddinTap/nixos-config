@@ -4,5 +4,7 @@
   users.users.salahuddin = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "bluetooth" "docker" ];
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
   };
 }

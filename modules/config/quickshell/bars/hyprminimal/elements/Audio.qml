@@ -13,7 +13,7 @@ import Quickshell.Services.Pipewire
     			implicitHeight: audioText.height
     
 			property string defaultSinkName: ""
-			property string volume:  parseInt(Pipewire.defaultAudioSink.audio.volume*100) + "%"
+			property string volume:  Pipewire.defaultAudioSink ? parseInt(Pipewire.defaultAudioSink.audio.volume*100) + "%" : "--%"
 			property var availableSinks: []
 			property int currentSinkIndex: -1  
 			function sinkDiscovery() {
@@ -79,8 +79,8 @@ import Quickshell.Services.Pipewire
  
     				Text {
 					id: defaultSinkName
-					text: Pipewire.defaultAudioSink.description + "  --"
-					color: if (Pipewire.defaultAudioSink.audio.muted == true) {main.colorMuted} else {main.foreground}
+					text: (Pipewire.defaultAudioSink ? Pipewire.defaultAudioSink.description : "audio") + "  --"
+					color: if (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted == true) {main.colorMuted} else {main.foreground}
 					font { family: main.font1; pixelSize: main.fontSize2;}
 					MouseArea {
 						anchors.fill: parent
@@ -102,14 +102,14 @@ import Quickshell.Services.Pipewire
 				}
     				Text {
          				id:volumePrefix
-			        	text: if (Pipewire.defaultAudioSink.audio.muted == true){" "} else {" vol: "} 
-         				color: if (Pipewire.defaultAudioSink.audio.muted == true) {main.colorMuted} else {main.color2}
+			        	text: if (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted == true){" "} else {" vol: "} 
+         				color: if (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted == true) {main.colorMuted} else {main.color2}
          				font { family: main.font2; pixelSize: main.fontSize2;}
  				}
 				Text {
         				id:volumeValue
-         				text: if (Pipewire.defaultAudioSink.audio.muted == true){"muted"} else {audioInfo.volume} 
-         				color: if (Pipewire.defaultAudioSink.audio.muted == true) {main.colorMuted} else {main.foreground}
+         				text: if (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted == true){"muted"} else {audioInfo.volume} 
+         				color: if (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio.muted == true) {main.colorMuted} else {main.foreground}
 					font { family: main.font2; pixelSize: main.fontSize2;}
 					MouseArea {
 						anchors.fill: parent
@@ -117,13 +117,17 @@ import Quickshell.Services.Pipewire
 						onWheel: function(event) {
        			 				var delta = event.angleDelta.y;
 
-        						Pipewire.defaultAudioSink.audio.volume += delta > 0 ? 0.01 : -0.01;
-							Pipewire.defaultAudioSink.audio.volume = Math.max(0.0, Math.min(1.0, Pipewire.defaultAudioSink.audio.volume));	
+        						if (Pipewire.defaultAudioSink) {
+							Pipewire.defaultAudioSink.audio.volume += delta > 0 ? 0.01 : -0.01;
+							Pipewire.defaultAudioSink.audio.volume = Math.max(0.0, Math.min(1.0, Pipewire.defaultAudioSink.audio.volume));
+						}	
 						}
 						onClicked: {
 
-							if (Pipewire.defaultAudioSink.audio.muted == true) {Pipewire.defaultAudioSink.audio.muted = false}
-							else {Pipewire.defaultAudioSink.audio.muted = true}	
+							if (Pipewire.defaultAudioSink) {
+								if (Pipewire.defaultAudioSink.audio.muted == true) {Pipewire.defaultAudioSink.audio.muted = false}
+								else {Pipewire.defaultAudioSink.audio.muted = true}
+							}	
 						}
 					}	
 

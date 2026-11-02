@@ -12,6 +12,11 @@
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true;
 
+  # Icon font used by the quickshell island bar (Material Symbols Rounded ligatures)
+  fonts.packages = with pkgs; [
+    material-symbols
+  ];
+
   # Desktop packages
   environment.systemPackages = with pkgs; [
     pi-coding-agent

@@ -20,6 +20,11 @@
       force = true;
     };
 
+    ".config/ghostty/config.ghostty" = {
+      source = ./config/ghostty/config;
+      force = true;
+    };
+
     # Quickshell — recursive copy of entire directory tree
     ".config/quickshell" = {
       source = ./config/quickshell;
@@ -61,6 +66,25 @@
     # Qt5Compat for dynamicglacier bar
     ".config/environment.d/20-qt5compat.conf" = {
       source = ./config/environment.d/20-qt5compat.conf;
+      force = true;
+    };
+
+    # Clipboard history rofi script
+    ".local/bin/cliphist-rofi.sh" = {
+      source = ./config/scripts/cliphist-rofi.sh;
+      force = true;
+    };
+
+    # Rofi theme (Vanta Black)
+    ".config/rofi/theme.rasi" = {
+      source = ./config/rofi/theme.rasi;
+      force = true;
+    };
+
+    # Neovim config (Vanta Black)
+    ".config/nvim" = {
+      source = ./config/nvim;
+      recursive = true;
       force = true;
     };
   };

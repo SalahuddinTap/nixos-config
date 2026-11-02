@@ -1,0 +1,62 @@
+# Ghostty Configuration
+# Vanta Black - Pitch black theme (#000000 background)
+
+# Font
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+
+# Window
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+window-decoration = none
+background-opacity = 0.9
+
+# Cursor
+cursor-style = block
+cursor-style-blink = true
+
+# Colors - Vanta Black (pure #000000 background)
+background = #000000
+foreground = #FFFFFF
+selection-background = #FFFFFF
+selection-foreground = #000000
+cursor-color = #FFFFFF
+palette = 0=#000000
+palette = 1=#FFFFFF
+palette = 2=#FFFFFF
+palette = 3=#FFFFFF
+palette = 4=#FFFFFF
+palette = 5=#FFFFFF
+palette = 6=#FFFFFF
+palette = 7=#FFFFFF
+palette = 8=#333333
+palette = 9=#FFFFFF
+palette = 10=#FFFFFF
+palette = 11=#FFFFFF
+palette = 12=#FFFFFF
+palette = 13=#FFFFFF
+palette = 14=#FFFFFF
+palette = 15=#FFFFFF
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Key bindings
+# keybind = super+q=close_surface
+# keybind = super+w=close_tab
+# keybind = super+t=new_tab
+# keybind = super+1=goto_tab:1
+# keybind = super+2=goto_tab:2
+# keybind = super+3=goto_tab:3
+# keybind = super+4=goto_tab:4
+# keybind = super+5=goto_tab:5
+# keybind = super+6=goto_tab:6
+# keybind = super+7=goto_tab:7
+# keybind = super+8=goto_tab:8
+# keybind = super+9=goto_tab:9
+# keybind = super+0=goto_tab:last
+
+# Performance
+# max-fps = 120
+# vsync = true

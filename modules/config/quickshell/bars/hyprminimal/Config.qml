@@ -18,9 +18,9 @@ Singleton {
     // font2 is used for labels and values.
     // font3 is a fallback Nerd Font (used for icons if font1/font2
     //   don't include the required glyphs).
-    property string font1:    "Eurostile"
-    property string font2:    "Nudista Light"
-    property string font3:    "GohuFont 14 Nerd Font Mono"
+    property string font1:    "JetBrainsMono Nerd Font"
+    property string font2:    "JetBrainsMono Nerd Font"
+    property string font3:    "JetBrainsMono Nerd Font Mono"
     property int    fontSize1: 18   // large (clock, workspace numbers)
     property int    fontSize2: 16   // regular (labels, values)
 

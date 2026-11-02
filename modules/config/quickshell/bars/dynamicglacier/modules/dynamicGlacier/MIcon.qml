@@ -1,14 +1,11 @@
 import QtQuick
 
 // Material Symbols Rounded helper.
+// Requires the "Material Symbols Rounded" font (nixpkgs: material-symbols,
+// enabled via fonts.packages in modules/desktop.nix).
 // Usage:
 //   MIcon { name: "battery_full"; size: 14; color: "white" }
-//   MIcon { name: "mic"; size: 12; filled: true; weight: Font.Bold }
-//
-// The variable font supports a FILL axis. Qt cannot drive arbitrary variable
-// font axes, but the symbol set ships filled variants by appending styleName
-// "Filled" via OpenType features, so a Bold/Black weight + the right glyph
-// is usually enough. For exact filled glyphs the same name keeps working.
+//   MIcon { name: "mic"; size: 12; filled: true }
 Text {
     id: root
 
