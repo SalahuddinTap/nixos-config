@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects as GE
 import "."
 
 Item {
@@ -271,16 +270,15 @@ Item {
                 visible: false
             }
 
-            GE.OpacityMask {
+            Image {
                 anchors.fill: parent
-                source: collapsedCoverSource
-                visible: root.artUrl !== "" && collapsedCoverSource.status === Image.Ready
-
-                maskSource: Rectangle {
-                    width: collapsedCover.width
-                    height: collapsedCover.height
-                    radius: collapsedCover.radius
-                }
+                source: root.artUrl
+                fillMode: Image.PreserveAspectCrop
+                asynchronous: true
+                visible: root.artUrl !== "" 
+                layer.enabled: true
+                layer.effect: null
+                layer.textureSize: Qt.size(collapsedCover.width, collapsedCover.height)
             }
 
             Row {
@@ -1785,16 +1783,12 @@ Item {
                 visible: false
             }
 
-            GE.OpacityMask {
+            Image {
                 anchors.fill: parent
-                source: mediaCoverSource
-                visible: root.artUrl !== "" && mediaCoverSource.status === Image.Ready
-
-                maskSource: Rectangle {
-                    width: mediaArtwork.width
-                    height: mediaArtwork.height
-                    radius: mediaArtwork.radius
-                }
+                source: root.artUrl
+                fillMode: Image.PreserveAspectCrop
+                asynchronous: true
+                visible: root.artUrl !== ""
             }
 
             Row {
