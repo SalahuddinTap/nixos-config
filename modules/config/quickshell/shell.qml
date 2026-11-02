@@ -11,42 +11,28 @@ ShellRoot {
 
     property string activeBar: "hyprminimal"
 
-    Loader {
-        id: barLoader
-        anchors.fill: parent
-        sourceComponent: activeBar === "dynamicglacier" ? dynamicGlacierComponent :
-                         activeBar === "anomshell" ? anomshellComponent :
-                         hyprminimalComponent
-    }
+    Variants {
+        model: Quickshell.screens
 
-    // All components lazy-loaded via Loader to avoid validation of unused components
-    Component {
-        id: hyprminimalComponent
         Loader {
-            source: "bars/hyprminimal/HyprMinimal.qml"
+            id: barLoader
+            required property var modelData
+            source: root.activeBar === "anomshell" ? "bars/anomshell/AnomshellFlat.qml" :
+                    root.activeBar === "dynamicglacier" ? "modules/dynamicGlacier/DynamicGlacier.qml" :
+                    "bars/hyprminimal/HyprMinimal.qml"
         }
     }
 
-    Component {
-        id: anomshellComponent
-        Loader {
-            source: "bars/anomshell/AnomshellFlat.qml"
-            property var hyprMonitor: Hyprland.monitorFor(Screen.primary)
-        }
-    }
-
-    Component {
-        id: dynamicGlacierComponent
-        Loader {
-            source: "modules/dynamicGlacier/DynamicGlacier.qml"
-        }
-    }
-
-    // Allow switching via environment variable or file
     Component.onCompleted: {
+        // Read active bar from file
         const barFile = "/tmp/quickshell-active-bar"
-        if (FileSystem.exists(barFile)) {
-            activeBar = FileSystem.readFile(barFile).trim()
+        try {
+            const content = File.read(barFile)
+            if (content && content.trim()) {
+                activeBar = content.trim()
+            }
+        } catch (e) {
+            // File doesn't exist, use default
         }
     }
 }
