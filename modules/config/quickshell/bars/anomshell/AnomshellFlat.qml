@@ -44,7 +44,6 @@ PanelWindow {
     // Notification server
     NotificationServer {
         id: notifServer
-        keepOnReload: true
     }
 
     anchors {
