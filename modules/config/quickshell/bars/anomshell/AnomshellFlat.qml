@@ -86,7 +86,7 @@ PanelWindow {
                     text: ""
                     color: root.accent
                     font.pixelSize: 12
-                    font.family: "JetBrainsMono Nerd Font Propo"
+                    font.family: "JetBrainsMono Nerd Font Mono"
                 }
 
                 Workspaces {
@@ -143,7 +143,7 @@ PanelWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     text: ""
                     font.pixelSize: 13
-                    font.family: "JetBrainsMono Nerd Font Propo"
+                    font.family: "JetBrainsMono Nerd Font Mono"
                     color: root.muted
                 }
 
@@ -151,7 +151,7 @@ PanelWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     text: "󰂚"
                     font.pixelSize: 14
-                    font.family: "JetBrainsMono Nerd Font Propo"
+                    font.family: "JetBrainsMono Nerd Font Mono"
                     color: root.muted
                 }
 

@@ -36,7 +36,7 @@ PanelWindow {
                         : "\ue900"
     readonly property string launcherIconFont: launcherIconPreset === "omarchy"
         ? "Omarchy"
-        : "JetBrainsMono Nerd Font Propo"
+        : "JetBrainsMono Nerd Font Mono"
     readonly property int launcherIconSize: settings?.launcherIconSize || 12
 
     readonly property bool barOnBottom: (settings?.barPosition || "top") === "bottom"
@@ -178,7 +178,7 @@ PanelWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     text: ""
                     font.pixelSize: 13
-                    font.family: "JetBrainsMono Nerd Font Propo"
+                    font.family: "JetBrainsMono Nerd Font Mono"
                     color: controlCenter.showing ? root.accent : root.muted
 
                     Behavior on color { ColorAnimation { duration: 150 } }
@@ -198,7 +198,7 @@ PanelWindow {
                             ? "󱅫"
                             : "󰂚"
                     font.pixelSize: 14
-                    font.family: "JetBrainsMono Nerd Font Propo"
+                    font.family: "JetBrainsMono Nerd Font Mono"
                     color: root.notifServer && root.notifServer.dndEnabled
                         ? root.red
                         : root.notifServer && root.notifServer.panelOpen

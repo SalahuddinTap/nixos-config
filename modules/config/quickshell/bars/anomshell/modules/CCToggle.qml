@@ -31,7 +31,7 @@ Rectangle {
             text:           icon
             color:          active ? (theme.accent || "#89b4fa") : (theme.muted || "#585b70")
             font.pixelSize: 18
-            font.family:    "JetBrainsMono Nerd Font"
+            font.family:    "JetBrainsMono Nerd Font Mono"
             Behavior on color { ColorAnimation { duration: 200 } }
         }
 
@@ -40,7 +40,7 @@ Rectangle {
             text:           label
             color:          active ? (theme.fg || "#cdd6f4") : (theme.muted || "#585b70")
             font.pixelSize: 9
-            font.family:    "JetBrainsMono Nerd Font"
+            font.family:    "JetBrainsMono Nerd Font Mono"
             elide:          Text.ElideRight
             width:          parent.parent.width - 16
             horizontalAlignment: Text.AlignHCenter

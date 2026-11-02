@@ -45,7 +45,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 color:          theme.fg || "#cdd6f4"
                 font.pixelSize: 13
-                font.family:    "JetBrainsMono Nerd Font"
+                font.family:    "JetBrainsMono Nerd Font Mono"
                 font.weight:    Font.Medium
             }
 
@@ -54,7 +54,7 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 color:          theme.accent || "#89b4fa"
                 font.pixelSize: 9
-                font.family:    "JetBrainsMono Nerd Font"
+                font.family:    "JetBrainsMono Nerd Font Mono"
                 font.weight:    Font.Medium
                 bottomPadding:  1
             }
@@ -73,7 +73,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             color:          theme.muted || "#585b70"
             font.pixelSize: 11
-            font.family:    "JetBrainsMono Nerd Font"
+            font.family:    "JetBrainsMono Nerd Font Mono"
         }
     }
 
@@ -167,7 +167,7 @@ Item {
                         text:           "‹"
                         color:          root.theme.muted || "#585b70"
                         font.pixelSize: 14
-                        font.family:    "JetBrainsMono Nerd Font"
+                        font.family:    "JetBrainsMono Nerd Font Mono"
                         width:          20
                         horizontalAlignment: Text.AlignHCenter
                         MouseArea {
@@ -186,7 +186,7 @@ Item {
                         }
                         color:          root.theme.fg || "#cdd6f4"
                         font.pixelSize: 11
-                        font.family:    "JetBrainsMono Nerd Font"
+                        font.family:    "JetBrainsMono Nerd Font Mono"
                         font.weight:    Font.Medium
                         horizontalAlignment: Text.AlignHCenter
                         width:          parent.width - 40
@@ -200,7 +200,7 @@ Item {
                         text:           "›"
                         color:          root.theme.muted || "#585b70"
                         font.pixelSize: 14
-                        font.family:    "JetBrainsMono Nerd Font"
+                        font.family:    "JetBrainsMono Nerd Font Mono"
                         width:          20
                         horizontalAlignment: Text.AlignHCenter
                         MouseArea {
@@ -222,7 +222,7 @@ Item {
                             text:           modelData
                             color:          root.theme.muted || "#585b70"
                             font.pixelSize: 9
-                            font.family:    "JetBrainsMono Nerd Font"
+                            font.family:    "JetBrainsMono Nerd Font Mono"
                             horizontalAlignment: Text.AlignHCenter
                         }
                     }
@@ -273,7 +273,7 @@ Item {
                                          : (root.theme.fg || "#cdd6f4")
                                 opacity: isValid ? 1.0 : 0.0
                                 font.pixelSize: 10
-                                font.family:    "JetBrainsMono Nerd Font"
+                                font.family:    "JetBrainsMono Nerd Font Mono"
                                 font.weight:    isToday ? Font.Bold : Font.Normal
                                 horizontalAlignment: Text.AlignHCenter
                             }

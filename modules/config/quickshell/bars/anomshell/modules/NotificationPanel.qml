@@ -793,7 +793,7 @@ Item {
                             text: "󰂛"
                             color: t("muted", "#585b70")
                             font.pixelSize: 30
-                            font.family: "JetBrainsMono Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font Mono"
                             opacity: 0.5
                         }
                         Text {

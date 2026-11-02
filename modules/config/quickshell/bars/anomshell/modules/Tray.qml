@@ -192,7 +192,7 @@ Item {
                                                                     ? (root.theme.fg    || "#cdd6f4")
                                                                     : (root.theme.muted || "#585b70")
                                             font.pixelSize:         11
-                                            font.family:            "JetBrainsMono Nerd Font"
+                                            font.family:            "JetBrainsMono Nerd Font Mono"
                                         }
 
                                         MouseArea {
@@ -260,7 +260,7 @@ Item {
                         : (root.theme.fg || "#cdd6f4")
                     opacity: trayItem.hovered ? 1.0 : 0.68
                     font.pixelSize: 12
-                    font.family: "JetBrainsMono Nerd Font"
+                    font.family: "JetBrainsMono Nerd Font Mono"
                     font.weight: Font.Medium
                     renderType: Text.NativeRendering
 
@@ -301,7 +301,7 @@ Item {
                                           : modelData.title
                         color:            root.theme.fg || "#cdd6f4"
                         font.pixelSize:   10
-                        font.family:      "JetBrainsMono Nerd Font"
+                        font.family:      "JetBrainsMono Nerd Font Mono"
                     }
                 }
 

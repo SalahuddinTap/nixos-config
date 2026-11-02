@@ -27,7 +27,7 @@ Item {
             text: icon
             color: iconMa.containsMouse ? (c("fg", "#cdd6f4")) : (c("muted", "#585b70"))
             font.pixelSize: 15
-            font.family: "JetBrainsMono Nerd Font"
+            font.family: "JetBrainsMono Nerd Font Mono"
             Behavior on color { ColorAnimation { duration: 120 } }
 
             MouseArea {

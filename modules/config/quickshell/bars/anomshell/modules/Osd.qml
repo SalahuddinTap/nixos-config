@@ -163,7 +163,7 @@ Item {
                             text: "󰎆"
                             color: root.toneColor()
                             font.pixelSize: 18
-                            font.family: "JetBrainsMono Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font Mono"
                         }
                     }
 
@@ -179,7 +179,7 @@ Item {
                                 text: root.service ? root.service.icon : "󰕾"
                                 color: root.toneColor()
                                 font.pixelSize: 11
-                                font.family: "JetBrainsMono Nerd Font"
+                                font.family: "JetBrainsMono Nerd Font Mono"
                             }
 
                             Text {

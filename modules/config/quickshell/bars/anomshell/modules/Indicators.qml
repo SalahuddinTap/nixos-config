@@ -104,7 +104,7 @@ Item {
             text:                   ""
             color:                  root.green
             font.pixelSize:         13
-            font.family:            "JetBrainsMono Nerd Font"
+            font.family:            "JetBrainsMono Nerd Font Mono"
 
             Behavior on opacity { NumberAnimation { duration: 150 } }
 
@@ -126,7 +126,7 @@ Item {
             text:                   "󱫖"
             color:                  root.accent
             font.pixelSize:         13
-            font.family:            "JetBrainsMono Nerd Font"
+            font.family:            "JetBrainsMono Nerd Font Mono"
 
             Behavior on opacity { NumberAnimation { duration: 150 } }
 
@@ -147,7 +147,7 @@ Item {
         //     text:                   "󰂛"
         //     color:                  root.accent
         //     font.pixelSize:         13
-        //     font.family:            "JetBrainsMono Nerd Font"
+        //     font.family:            "JetBrainsMono Nerd Font Mono"
 
         //     Behavior on opacity { NumberAnimation { duration: 150 } }
 
@@ -169,7 +169,7 @@ Item {
             text:                   "󰻂"
             color:                  root.red
             font.pixelSize:         13
-            font.family:            "JetBrainsMono Nerd Font"
+            font.family:            "JetBrainsMono Nerd Font Mono"
 
             SequentialAnimation on opacity {
                 loops:   Animation.Infinite

@@ -501,7 +501,7 @@ Item {
                 text: root.trackTitle
                 color: root.fg
                 font.pixelSize: 10
-                font.family: "JetBrainsMono Nerd Font"
+                font.family: "JetBrainsMono Nerd Font Mono"
 
                 onTextChanged: x = 0
 
@@ -722,7 +722,7 @@ Item {
                         text: "󰎆"
                         color: Qt.alpha(root.paletteAccent, 0.82)
                         font.pixelSize: 22
-                        font.family: "JetBrainsMono Nerd Font"
+                        font.family: "JetBrainsMono Nerd Font Mono"
                     }
                 }
 
@@ -770,7 +770,7 @@ Item {
                             text: "󰒮"
                             color: root.mutedText
                             font.pixelSize: 10
-                            font.family: "JetBrainsMono Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font Mono"
 
                             MouseArea {
                                 anchors.fill: parent
@@ -834,7 +834,7 @@ Item {
                             text: "󰒭"
                             color: root.mutedText
                             font.pixelSize: 10
-                            font.family: "JetBrainsMono Nerd Font"
+                            font.family: "JetBrainsMono Nerd Font Mono"
 
                             MouseArea {
                                 anchors.fill: parent
@@ -859,7 +859,7 @@ Item {
                         text: root.isPlaying ? "󰏤" : "󰐊"
                         color: root.paletteAccent
                         font.pixelSize: 15
-                        font.family: "JetBrainsMono Nerd Font"
+                        font.family: "JetBrainsMono Nerd Font Mono"
                     }
 
                     MouseArea {
