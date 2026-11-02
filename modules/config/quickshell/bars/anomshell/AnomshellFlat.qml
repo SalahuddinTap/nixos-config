@@ -10,8 +10,7 @@ import "modules"
 PanelWindow {
     id: root
 
-    required property var modelData
-    screen: modelData
+    screen: Quickshell.screens[0]
 
     property var hyprMonitor: Hyprland.monitorFor(screen)
 
