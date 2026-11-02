@@ -23,9 +23,9 @@
       ls = "eza";
       ff = "fastfetch";
       rebuild = "sudo nixos-rebuild switch --flake .#nixos";
-      bar-pill = "echo 'hyprminimal' > /tmp/quickshell-active-bar && pkill quickshell 2>/dev/null; sleep 0.5; /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell &";
-      bar-island = "echo 'dynamicglacier' > /tmp/quickshell-active-bar && pkill quickshell 2>/dev/null; sleep 0.5; /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell &";
-      bar-wide = "echo 'anomshell' > /tmp/quickshell-active-bar && pkill quickshell 2>/dev/null; sleep 0.5; /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell &";
+      bar-pill = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=hyprminimal /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell &";
+      bar-island = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=dynamicglacier /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell &";
+      bar-wide = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=anomshell /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell &";
     };
   };
 

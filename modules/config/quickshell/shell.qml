@@ -10,7 +10,7 @@ import "bars/anomshell"
 ShellRoot {
     id: root
 
-    property string activeBar: "anomshell"
+    property string activeBar: Quickshell.env("QS_ACTIVE_BAR") || "anomshell"
 
     Variants {
         model: Quickshell.screens
@@ -22,9 +22,9 @@ ShellRoot {
             Loader {
                 active: true
                 sourceComponent: {
-                    if (root.activeBar === "anomshell") return anomshellComp
                     if (root.activeBar === "dynamicglacier") return dynamicGlacierComp
-                    return hyprminimalComp
+                    if (root.activeBar === "hyprminimal") return hyprminimalComp
+                    return anomshellComp
                 }
             }
         }
@@ -37,7 +37,6 @@ ShellRoot {
         }
     }
 
-    // Loaded via source string to avoid QML validation of broken Config singleton
     Component {
         id: hyprminimalComp
         Loader { source: "bars/hyprminimal/HyprMinimal.qml" }
@@ -46,12 +45,5 @@ ShellRoot {
     Component {
         id: dynamicGlacierComp
         Loader { source: "modules/dynamicGlacier/DynamicGlacier.qml" }
-    }
-
-    Component.onCompleted: {
-        try {
-            const content = File.read("/tmp/quickshell-active-bar")
-            if (content && content.trim()) activeBar = content.trim()
-        } catch (e) {}
     }
 }

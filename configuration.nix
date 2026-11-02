@@ -23,7 +23,8 @@
   # Additional system packages (non-desktop)
   environment.systemPackages = with pkgs; [
     git
-
+    yazi
+    ghostty
     vscode
     wget
     fastfetch
