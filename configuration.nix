@@ -35,6 +35,8 @@
     brave               # Brave browser
     wl-clipboard        # wl-copy, wl-paste for Wayland clipboard
     cliphist            # Clipboard history manager (stores history, works with rofi)
+    spotube              # Spotify replacement (open-source client)
+    floorp-bin           # Firefox-based browser (Zen Browser alternative)
     # LSP servers (NixOS-native, work without patchelf)
     lua-language-server
     pyright
