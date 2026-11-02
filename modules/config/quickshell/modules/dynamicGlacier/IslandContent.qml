@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
+import Qt5Compat.GraphicalEffects as GE
 
 Item {
     id: root
@@ -270,7 +270,7 @@ Item {
                 visible: false
             }
 
-            OpacityMask {
+            GE.OpacityMask {
                 anchors.fill: parent
                 source: collapsedCoverSource
                 visible: root.artUrl !== "" && collapsedCoverSource.status === Image.Ready
@@ -1784,7 +1784,7 @@ Item {
                 visible: false
             }
 
-            OpacityMask {
+            GE.OpacityMask {
                 anchors.fill: parent
                 source: mediaCoverSource
                 visible: root.artUrl !== "" && mediaCoverSource.status === Image.Ready

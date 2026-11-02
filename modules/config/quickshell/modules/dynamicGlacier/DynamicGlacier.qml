@@ -8,6 +8,7 @@ import Quickshell.Services.Mpris
 import Quickshell.Services.Pipewire
 import Quickshell.Services.UPower
 import Quickshell.Wayland
+import "."
 
 Scope {
     id: root

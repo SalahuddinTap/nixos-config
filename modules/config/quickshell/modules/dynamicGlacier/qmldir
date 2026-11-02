@@ -1,0 +1,12 @@
+module dynamicGlacier
+AudioIndicator 1.0 AudioIndicator.qml
+BatteryPanel 1.0 BatteryPanel.qml
+BluetoothPanel 1.0 BluetoothPanel.qml
+DynamicGlacier 1.0 DynamicGlacier.qml
+FrostedGlassSurface 1.0 FrostedGlassSurface.qml
+HandleStyleSwitch 1.0 HandleStyleSwitch.qml
+IslandContent 1.0 IslandContent.qml
+IslandSurface 1.0 IslandSurface.qml
+MIcon 1.0 MIcon.qml
+SettingsPanel 1.0 SettingsPanel.qml
+TrayIndicator 1.0 TrayIndicator.qml
