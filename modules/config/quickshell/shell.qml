@@ -4,8 +4,10 @@
 
 import QtQuick
 import Quickshell
+import Quickshell.Hyprland
 import "modules/dynamicGlacier"
 import "bars/hyprminimal"
+import "bars/anomshell"
 
 ShellRoot {
     id: root
@@ -15,7 +17,9 @@ ShellRoot {
     Loader {
         id: barLoader
         anchors.fill: parent
-        sourceComponent: activeBar === "dynamicglacier" ? dynamicGlacierComponent : hyprminimalComponent
+        sourceComponent: activeBar === "dynamicglacier" ? dynamicGlacierComponent :
+                         activeBar === "anomshell" ? anomshellComponent :
+                         hyprminimalComponent
     }
 
     Component {
@@ -26,6 +30,13 @@ ShellRoot {
     Component {
         id: hyprminimalComponent
         HyprMinimal {}
+    }
+
+    Component {
+        id: anomshellComponent
+        AnomshellFlat {
+            hyprMonitor: Hyprland.monitorFor(Screen.primary)
+        }
     }
 
     // Allow switching via environment variable or file

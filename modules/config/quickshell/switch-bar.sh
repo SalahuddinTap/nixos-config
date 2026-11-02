@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # QuickShell bar switcher
-# Usage: switch-bar.sh [hyprminimal|dynamicglacier]
+# Usage: switch-bar.sh [hyprminimal|dynamicglacier|anomshell]
 
 BAR_FILE="/tmp/quickshell-active-bar"
 
 case "${1:-}" in
-    hyprminimal|dynamicglacier)
+    hyprminimal|dynamicglacier|anomshell)
         echo "$1" > "$BAR_FILE"
         echo "Switched to $1 bar"
         echo "Restart quickshell to apply: pkill quickshell && quickshell &"
@@ -16,11 +16,11 @@ case "${1:-}" in
         else
             echo "Current bar: hyprminimal (default)"
         fi
-        echo "Usage: $0 [hyprminimal|dynamicglacier]"
+        echo "Usage: $0 [hyprminimal|dynamicglacier|anomshell]"
         ;;
     *)
         echo "Unknown bar: $1"
-        echo "Usage: $0 [hyprminimal|dynamicglacier]"
+        echo "Usage: $0 [hyprminimal|dynamicglacier|anomshell]"
         exit 1
         ;;
 esac
