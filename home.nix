@@ -15,17 +15,9 @@
     rofi
   ];
 
+  # fish is the only interactive shell (login shell set in users.nix).
+  # bash remains only as /bin/sh for system scripts — no HM bash config.
   programs.fish = {
-    enable = true;
-    shellAliases = {
-      ls = "eza";
-      ll = "eza -la";
-      ff = "fastfetch";
-      bar-island = "bar-switch.sh island";
-      bar-wide = "bar-switch.sh wide";
-    };
-  };
-  programs.bash = {
     enable = true;
     shellAliases = {
       ls = "eza";
@@ -37,8 +29,6 @@
     };
   };
 
-  # Qt5Compat QML import path for the dynamicglacier Quickshell bar
-  # (nix-managed, no hardcoded store hashes)
   home.sessionVariables = {
     # ~/.local/bin must be on PATH (bar-switch.sh, kari-pip.sh, cliphist-rofi.sh, qmd)
     PATH = "$HOME/.local/bin:$PATH";
