@@ -34,8 +34,8 @@
     vscode
     wget
     fastfetch
-    spotify
-    spicetify-cli
+    # spotify + spicetify come from spicetify-nix (home.nix programs.spicetify)
+    # — the spiced wrapper is the only Spotify now; flatpak client removed.
     brave               # Brave browser (Zen is a flatpak: flatpak run app.zen_browser.zen)
     wl-clipboard        # wl-copy, wl-paste for Wayland clipboard
     cliphist            # Clipboard history manager (stores history, works with rofi)

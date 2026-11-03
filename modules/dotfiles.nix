@@ -34,10 +34,8 @@
       force = true;
     };
 
-    ".config/spicetify/config-xpui.ini" = {
-      source = ./config/spicetify/config-xpui.ini;
-      force = true;
-    };
+    # NOTE: ~/.config/spicetify/config-xpui.ini is now managed by
+    # spicetify-nix (home.nix programs.spicetify) — no HM dotfile entry.
 
     ".config/dolphinrc" = {
       source = ./config/dolphinrc;

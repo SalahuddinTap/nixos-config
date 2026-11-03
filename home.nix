@@ -1,8 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
+let
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+in
 {
   imports = [
     ./modules/dotfiles.nix
+    inputs.spicetify-nix.homeManagerModules.default
   ];
 
   home.username = "salahuddin";
@@ -27,6 +31,12 @@
       bar-island = "bar-switch.sh island";
       bar-wide = "bar-switch.sh wide";
     };
+  };
+
+  # Declarative Spicetify (spicetify-nix): TUI theme applied on rebuild
+  programs.spicetify = {
+    enable = true;
+    theme = spicePkgs.themes.text; # closest to "tui" — minimal text-based official theme
   };
 
   home.sessionVariables = {
