@@ -3,7 +3,9 @@
 {
   # Nix settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.nixPath = [ "nixos-config=/etc/nixos/configuration.nix" "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" ];
+  # Flakes are the primary workflow; keep only the nixos-config lookup.
+  # (The old nixpkgs entry pointed at root's channel — removed.)
+  nix.nixPath = [ "nixos-config=/etc/nixos/configuration.nix" ];
   nixpkgs.config.allowUnfree = true;
 
   # Boot loader (systemd-boot EFI)
