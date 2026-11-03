@@ -1,122 +1,58 @@
--- ~/.config/nvim/lua/config/options.lua
--- Core options matching Kitty/Quickshell aesthetic
+vim.g.mapleader = " "
 
-local opt = vim.opt
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
--- UI
-opt.termguicolors = true
-opt.background = "dark"
-opt.signcolumn = "yes:1"
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.cursorlineopt = "number"
-opt.wrap = false
-opt.scrolloff = 8
-opt.sidescrolloff = 8
-opt.pumheight = 10
-opt.pumblend = 10
-opt.winblend = 10
-opt.showmode = false
-opt.showcmd = false
-opt.ruler = false
-opt.laststatus = 3
-opt.cmdheight = 0
-opt.conceallevel = 2
-opt.concealcursor = "nc"
+vim.opt.number = true
 
--- Indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.expandtab = true
-opt.smartindent = true
-opt.breakindent = true
+vim.opt.title = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.hlsearch = true
+vim.opt.backup = false
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 3
+vim.opt.expandtab = true
+vim.opt.scrolloff = 10
+vim.opt.shell = "fish"
+vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.wrap = false -- No Wrap lines
+vim.opt.backspace = { "start", "eol", "indent" }
+vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.splitkeep = "cursor"
+vim.opt.mouse = ""
 
--- Search
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = true
-opt.incsearch = true
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- Files
-opt.undofile = true
-opt.swapfile = false
-opt.backup = false
-opt.writebackup = false
-opt.autoread = true
-opt.autowrite = true
+-- Add asterisks in block comments
+vim.opt.formatoptions:append({ "r" })
 
--- Splits
-opt.splitright = true
-opt.splitbelow = true
+vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
+vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
--- Completion
-opt.completeopt = "menu,menuone,noselect,preview"
-opt.wildmode = "longest:full,full"
-opt.wildignorecase = true
+if vim.fn.has("nvim-0.8") == 1 then
+	vim.opt.cmdheight = 0
+end
 
--- Mouse
-opt.mouse = "a"
-opt.mousemoveevent = true
+-- File types
+vim.filetype.add({
+	extension = {
+		mdx = "mdx",
+	},
+})
 
--- Clipboard
-opt.clipboard = "unnamedplus"
-
--- Performance
-opt.updatetime = 200
-opt.timeoutlen = 300
-opt.ttimeoutlen = 10
-opt.redrawtime = 1500
-
--- Folding
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldenable = true
-opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldtext = ""
-opt.foldcolumn = "0"
-
--- Formatting
-opt.formatoptions = "jcroqlnt"
-
--- Grep
-opt.grepprg = "rg --vimgrep"
-opt.grepformat = "%f:%l:%c:%m"
-
--- Spell
-opt.spelllang = { "en" }
-opt.spelloptions = "camel"
-
--- Session
-opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
--- Virtual edit
-opt.virtualedit = "block"
-
--- Diff
-opt.diffopt:append("linematch:60")
-opt.diffopt:append("algorithm:histogram")
-opt.diffopt:append("indent-heuristic")
-
--- List chars
-opt.list = true
-opt.listchars = { tab = "▸ ", trail = "·", nbsp = "␣", extends = "→", precedes = "←" }
-
--- Fill chars
-opt.fillchars = {
-  fold = " ",
-  foldopen = "▾",
-  foldclose = "▸",
-  foldsep = "│",
-  diff = "╱",
-  eob = " ",
-  msgsep = "─",
-}
-
--- Provider
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider = 0
+vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_cmp = "blink.cmp"

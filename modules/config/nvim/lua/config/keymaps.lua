@@ -1,49 +1,76 @@
--- ~/.config/nvim/lua/config/keymaps.lua
--- Basic keymaps
+local discipline = require("craftzdog.discipline")
 
-local map = vim.keymap.set
+discipline.cowboy()
 
--- Better escape
-map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
 
--- Clear search highlight
-map("n", "<leader>h", "<cmd>nohlsearch<CR>", { desc = "Clear highlights" })
+-- Do things without affecting the registers
+keymap.set("n", "x", '"_x')
+keymap.set("n", "<Leader>p", '"0p')
+keymap.set("n", "<Leader>P", '"0P')
+keymap.set("v", "<Leader>p", '"0p')
+keymap.set("n", "<Leader>c", '"_c')
+keymap.set("n", "<Leader>C", '"_C')
+keymap.set("v", "<Leader>c", '"_c')
+keymap.set("v", "<Leader>C", '"_C')
+keymap.set("n", "<Leader>d", '"_d')
+keymap.set("n", "<Leader>D", '"_D')
+keymap.set("v", "<Leader>d", '"_d')
+keymap.set("v", "<Leader>D", '"_D')
 
--- Better window navigation
-map("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Move to top window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Move to right window" })
+-- Increment/decrement
+keymap.set("n", "+", "<C-a>")
+keymap.set("n", "-", "<C-x>")
 
--- Resize windows
-map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase window width" })
+-- Delete a word backwards
+keymap.set("n", "dw", 'vb"_d')
 
--- Buffer navigation
-map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
-map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
-map("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G")
 
--- Better indent
-map("v", "<", "<gv", { desc = "Indent left" })
-map("v", ">", ">gv", { desc = "Indent right" })
+-- Save with root permission (not working for now)
+--vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
--- Move lines
-map("n", "<A-j>", "<cmd>m .+1<CR>==", { desc = "Move line down" })
-map("n", "<A-k>", "<cmd>m .-2<CR>==", { desc = "Move line up" })
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+-- Disable continuations
+keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
+keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
--- Save file
-map({ "n", "v" }, "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+-- Jumplist
+keymap.set("n", "<C-m>", "<C-i>", opts)
 
--- Quit
-map("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit all" })
+-- New tab
+keymap.set("n", "te", ":tabedit")
+keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- Split window
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
+-- Move window
+keymap.set("n", "sh", "<C-w>h")
+keymap.set("n", "sk", "<C-w>k")
+keymap.set("n", "sj", "<C-w>j")
+keymap.set("n", "sl", "<C-w>l")
 
--- Lazy
-map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Lazy" })
+-- Resize window
+keymap.set("n", "<C-w><left>", "<C-w><")
+keymap.set("n", "<C-w><right>", "<C-w>>")
+keymap.set("n", "<C-w><up>", "<C-w>+")
+keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Mason
-map("n", "<leader>m", "<cmd>Mason<CR>", { desc = "Mason" })
+-- Diagnostics
+keymap.set("n", "<C-j>", function()
+	vim.diagnostic.goto_next()
+end, opts)
+
+keymap.set("n", "<leader>r", function()
+	require("craftzdog.hsl").replaceHexWithHSL()
+end)
+
+keymap.set("n", "<leader>i", function()
+	require("craftzdog.lsp").toggleInlayHints()
+end)
+
+vim.api.nvim_create_user_command("ToggleAutoformat", function()
+	require("craftzdog.lsp").toggleAutoformat()
+end, {})

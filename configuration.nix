@@ -20,32 +20,32 @@
     options = [ "defaults" "noatime" ];
   };
 
+  # Allow prebuilt dynamically-linked Linux binaries (Mason lua-language-server,
+  # codelldb adapter, Copilot language server) to run on NixOS
+  programs.nix-ld.enable = true;
+
   # Additional system packages (non-desktop)
   environment.systemPackages = with pkgs; [
     fish
     git
     yazi
-    ghostty
+    quickshell
     neovim
     vscode
     wget
     fastfetch
     spotify
     spicetify-cli
-    brave               # Brave browser
+    brave               # Brave browser (Zen is a flatpak: flatpak run app.zen_browser.zen)
     wl-clipboard        # wl-copy, wl-paste for Wayland clipboard
     cliphist            # Clipboard history manager (stores history, works with rofi)
-    spotube              # Spotify replacement (open-source client)
-    floorp-bin           # Firefox-based browser (Zen Browser alternative)
     mpv                  # Video player (for kari PiP)
+    gcc
+    fd
+    ripgrep
+    tree-sitter
+    unzip
+    luarocks
     jq                   # For kari-pip script JSON parsing
-    # LSP servers (NixOS-native, work without patchelf)
-    lua-language-server
-    pyright
-    typescript-language-server
-    vscode-langservers-extracted  # json, css, html
-    yaml-language-server
-    bash-language-server
-    nil                   # Nix LSP
   ];
 }

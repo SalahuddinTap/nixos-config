@@ -64,6 +64,9 @@ local menu        = "rofi -show drun"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+-- Session exports SHELL=bash (fish was missing from /etc/shells); force fish
+-- so kitty and other apps spawn the real login shell.
+hl.env("SHELL", "/run/current-system/sw/bin/fish")
 
 
 -----------------------
@@ -276,8 +279,7 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())        -- Close window
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))    -- Terminal
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("brave"))   -- Browser (Brave)
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("flatpak run app.zen_browser.zen"))  -- Browser (Zen)
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
+-- (SUPER+C duplicate close bind removed; SUPER+Q closes)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))

@@ -16,7 +16,9 @@
   zramSwap.enable = true;
 
   # Timezone
-  time.timeZone = "Europe/Amsterdam";
+  services.timesyncd.enable = true;
+  # Automatically update timezone based on IP location
+  services.automatic-timezoned.enable = true;
 
   # System state version (DO NOT CHANGE)
   system.stateVersion = "26.05";

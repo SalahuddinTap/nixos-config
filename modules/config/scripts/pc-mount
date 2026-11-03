@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# pc-mount.sh — mount the Inspiron PC's storage on the laptop over the ethernet link
+# Usage: pc-mount.sh        (mount)
+#        pc-mount.sh off    (unmount)
+set -euo pipefail
+
+PC_IP=192.168.50.1
+LAPTOP_IP=192.168.50.2
+IFACE=enp3s0
+CON=pc-link
+REMOTE=/home/salahuddin
+MNT=/home/salahuddin/pc
+UNIT=home-salahuddin-pc.automount
+
+if [[ $EUID -ne 0 ]]; then
+  exec sudo "$0" "$@"
+fi
+
+if [[ "${1:-}" == "off" ]]; then
+  echo "Unmounting $MNT…"
+  systemctl stop "$UNIT" 2>/dev/null || true
+  umount "$MNT" 2>/dev/null || true
+  echo "Done."
+  exit 0
+fi
+
+# 1. Make sure the ethernet link has its address
+if ! ip -br a show "$IFACE" 2>/dev/null | grep -q "$LAPTOP_IP"; then
+  echo "Bringing up $CON on $IFACE…"
+  nmcli con up "$CON" >/dev/null 2>&1 || {
+    ip link set "$IFACE" up
+    ip addr add "$LAPTOP_IP/24" dev "$IFACE" 2>/dev/null || true
+  }
+fi
+
+# 2. Wait for the PC to answer
+echo "Waiting for the PC at $PC_IP…"
+for i in {1..10}; do
+  ping -c1 -W1 "$PC_IP" >/dev/null 2>&1 && break
+  if [[ $i -eq 10 ]]; then
+    echo "PC not responding. Is it on and awake? Is the cable plugged in?" >&2
+    exit 1
+  fi
+done
+
+# 3. Already mounted?
+if findmnt -n -t nfs4 "$MNT" >/dev/null; then
+  echo "Already mounted:"
+  df -h "$MNT"
+  exit 0
+fi
+
+# 4. Start the automount and trigger it
+echo "Mounting $MNT…"
+systemctl daemon-reload
+systemctl start "$UNIT" 2>/dev/null || true
+ls "$MNT" >/dev/null 2>&1 || true
+
+# 5. Fallback: mount by hand if the automount didn't do it
+if ! findmnt -n -t nfs4 "$MNT" >/dev/null; then
+  echo "Automount didn't kick in, mounting manually…"
+  mount -t nfs -o noatime,nconnect=4 "$PC_IP:$REMOTE" "$MNT"
+fi
+
+echo "Done:"
+df -h "$MNT"

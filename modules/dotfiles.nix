@@ -20,11 +20,6 @@
       force = true;
     };
 
-    ".config/ghostty/config.ghostty" = {
-      source = ./config/ghostty/config;
-      force = true;
-    };
-
     # Quickshell — recursive copy of entire directory tree
     ".config/quickshell" = {
       source = ./config/quickshell;
@@ -32,13 +27,10 @@
       force = true;
     };
 
-    ".config/waybar/config.jsonc" = {
-      source = ./config/waybar/config.jsonc;
-      force = true;
-    };
-
-    ".config/waybar/style.css" = {
-      source = ./config/waybar/style.css;
+    # Neovim (LazyVim) — recursive
+    ".config/nvim" = {
+      source = ./config/nvim;
+      recursive = true;
       force = true;
     };
 
@@ -63,12 +55,6 @@
       force = true;
     };
 
-    # Qt5Compat for dynamicglacier bar
-    ".config/environment.d/20-qt5compat.conf" = {
-      source = ./config/environment.d/20-qt5compat.conf;
-      force = true;
-    };
-
     # Clipboard history rofi script
     ".local/bin/cliphist-rofi.sh" = {
       source = ./config/scripts/cliphist-rofi.sh;
@@ -82,17 +68,36 @@
       force = true;
     };
 
-    # Rofi theme (Vanta Black)
+    # Rofi config + theme (Vanta Black)
+    ".config/rofi/config.rasi" = {
+      source = ./config/rofi/config.rasi;
+      force = true;
+    };
+
     ".config/rofi/theme.rasi" = {
       source = ./config/rofi/theme.rasi;
       force = true;
     };
 
-    # Neovim config (Vanta Black)
-    ".config/nvim" = {
-      source = ./config/nvim;
-      recursive = true;
+    # Bar switcher (single mechanism: QS_ACTIVE_BAR env, quickshell from PATH)
+    ".local/bin/bar-switch.sh" = {
+      source = ./config/scripts/bar-switch.sh;
+      executable = true;
       force = true;
     };
+
+    # Fan control + PC mount helpers
+    ".local/bin/fan" = {
+      source = ./config/scripts/fan;
+      executable = true;
+      force = true;
+    };
+
+    ".local/bin/pc-mount" = {
+      source = ./config/scripts/pc-mount;
+      executable = true;
+      force = true;
+    };
+
   };
 }

@@ -13,23 +13,35 @@
     btop
     eza
     rofi
-    tree-sitter
   ];
 
-  programs.waybar.enable = true;
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ls = "eza";
+      ll = "eza -la";
+      ff = "fastfetch";
+      bar-island = "bar-switch.sh island";
+      bar-wide = "bar-switch.sh wide";
+    };
+  };
   programs.bash = {
     enable = true;
     shellAliases = {
       ls = "eza";
+      ll = "eza -la";
       ff = "fastfetch";
       rebuild = "sudo nixos-rebuild switch --flake .#nixos";
-      bar-pill = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=hyprminimal /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell >/dev/null 2>&1 &";
-      bar-island = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=dynamicglacier /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell >/dev/null 2>&1 &";
-      bar-wide = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=anomshell /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell >/dev/null 2>&1 &";
-      bar-me = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=bar-me /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell >/dev/null 2>&1 &";
-      bar-mines = "pkill -9 quickshell 2>/dev/null; sleep 0.5; QS_ACTIVE_BAR=bar-mines /nix/store/bbxmzvqnyssi0y1sq3iqdakm8y09mdga-quickshell-wrapped-0.3.2/bin/quickshell -c /home/salahuddin/.config/quickshell >/dev/null 2>&1 &";
+      bar-island = "bar-switch.sh island";
+      bar-wide = "bar-switch.sh wide";
     };
+  };
+
+  # Qt5Compat QML import path for the dynamicglacier Quickshell bar
+  # (nix-managed, no hardcoded store hashes)
+  home.sessionVariables = {
+    QML2_IMPORT_PATH = "${pkgs.qt5compat}/lib/qt-6/qml";
+    NIXPKGS_QT6_QML_IMPORT_PATH = "${pkgs.qt5compat}/lib/qt-6/qml";
   };
 
   home.stateVersion = "26.11";

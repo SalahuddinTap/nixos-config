@@ -1,3 +1,0 @@
-module hyprminimal
-singleton Config Config.qml
-singleton Time Time.qml

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# fan.sh — unified fan control for MSI GF63 Thin 11UC
+# Usage: fan.sh {max|middle|silent|status|boot|boot-set <x>}
+set -euo pipefail
+
+CMD_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+# shellcheck source=fan-lib.sh
+source "$CMD_DIR/fan-lib.sh"
+
+case "${1:-status}" in
+  max)
+    exec "$CMD_DIR/fan-max.sh"
+    ;;
+  middle)
+    exec "$CMD_DIR/fan-middle.sh"
+    ;;
+  silent)
+    exec "$CMD_DIR/fan-silent.sh"
+    ;;
+  status)
+    show_fans
+    ;;
+  boot)
+    # Show boot services status
+    "$CMD_DIR/boot/set-boot.sh" status
+    ;;
+  boot-set)
+    # Set boot profile: fan.sh boot-set {max|middle|silent|off}
+    if [[ -z "${2:-}" ]]; then
+      echo "Usage: fan.sh boot-set {max|middle|silent|off}" >&2
+      exit 1
+    fi
+    exec "$CMD_DIR/boot/set-boot.sh" "$2"
+    ;;
+  *)
+    echo "Usage: $0 {max|middle|silent|status|boot|boot-set <x>}" >&2
+    echo ""
+    echo "  max              Set fans to MAXIMUM (requires sudo)"
+    echo "  middle           Set fans to MIDDLE/BALANCED (requires sudo)"
+    echo "  silent           Set fans to SILENT (requires sudo)"
+    echo "  status           Show current fan speeds (no sudo)"
+    echo "  boot             Show boot profile status"
+    echo "  boot-set <x>     Set boot profile to max|middle|silent|off"
+    exit 1
+    ;;
+esac
