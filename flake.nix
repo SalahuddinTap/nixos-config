@@ -18,6 +18,13 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Declarative pi package management (pi.dev catalog as nix derivations).
+    # Activate in modules/pi-packages.nix (set enable + packages), then rebuild.
+    pi-packages = {
+      url = "github:Leoguy77/pi-packages.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nyx, home-manager, ... }@inputs: {

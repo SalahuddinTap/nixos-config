@@ -11,6 +11,8 @@
     ./modules/virtualisation.nix
     ./modules/users.nix
     ./modules/fan.nix
+    # NOTE: modules/pi-packages.nix is staged but NOT imported — import it only
+    # when activating nix-managed pi packages (see the file header).
   ];
 
   # Auto-mount Arch partition

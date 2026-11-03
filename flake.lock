@@ -93,11 +93,32 @@
         "type": "github"
       }
     },
+    "pi-packages": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793698369,
+        "narHash": "sha256-6u3FUdv7iFvj7dbB4OBZ022Oylo7C70kf8OZrHd/2bY=",
+        "owner": "Leoguy77",
+        "repo": "pi-packages.nix",
+        "rev": "f15c43b6dfbfa7b88af56bf2dab3d5fffb8213d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Leoguy77",
+        "repo": "pi-packages.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nyx": "nyx",
+        "pi-packages": "pi-packages",
         "spicetify-nix": "spicetify-nix"
       }
     },
