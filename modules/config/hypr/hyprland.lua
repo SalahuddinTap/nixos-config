@@ -64,9 +64,9 @@ local menu        = "rofi -show drun"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
--- Session exports SHELL=bash (fish was missing from /etc/shells); force fish
--- so kitty and other apps spawn the real login shell.
-hl.env("SHELL", "/run/current-system/sw/bin/fish")
+-- SHELL is set correctly by the session: login shell is fish (users.nix:
+-- /etc/shells + users.users.salahuddin.shell), so kitty and other apps
+-- spawn fish without a Hyprland-side override.
 
 
 -----------------------
@@ -287,6 +287,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.local/bin/kari-pip.sh"))  -- kari PiP: float+pin corner toggle
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pseudo())  -- pseudo-tiling moved to Shift+P
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m active -m output -o ~/Pictures/Screenshots --silent || true"))  -- Screenshot the active monitor
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))

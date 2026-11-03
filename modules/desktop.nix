@@ -27,6 +27,7 @@
     ncpamixer
     pavucontrol
     blueman
+    hyprshot
     nerd-fonts.jetbrains-mono
   ];
 }
