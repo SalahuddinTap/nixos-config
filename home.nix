@@ -36,7 +36,8 @@ in
   # Declarative Spicetify (spicetify-nix): TUI theme applied on rebuild
   programs.spicetify = {
     enable = true;
-    theme = spicePkgs.themes.text; # closest to "tui" — minimal text-based official theme
+    # sleek = terminal-phosphor look: bright green (#8bc34a) on near-black (#202020)
+    theme = spicePkgs.themes.sleek;
   };
 
   home.sessionVariables = {
