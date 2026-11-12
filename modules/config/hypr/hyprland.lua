@@ -23,10 +23,10 @@
 
 -- See https://wiki.hypr.land/configuring/core/monitors/
 hl.monitor({
-    output   = "",
+    output   = "eDP-1",
     mode     = "preferred",
     position = "auto",
-    scale    = "auto",
+    scale    = 1,
 })
 
 

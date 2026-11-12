@@ -5,7 +5,8 @@
 import QtQuick
 import Quickshell
 import Quickshell.Io
-import "bars/anomshell"
+import "bars/widebar"
+import "bars/widebar2"
 import "osd"
 import "notifications"
 import "app-launcher"
@@ -13,8 +14,8 @@ import "app-launcher"
 ShellRoot {
     id: root
 
-    // Active bar: "dynamicglacier" (island) or "anomshell" (wide).
-    // Switch with: bar-switch.sh island|wide
+    // Active bar: "dynamicglacier" (island), "widebar" or "widebar2" (wide).
+    // Switch with: bar-switch.sh island|wide|widebar2
     property string activeBar: Quickshell.env("QS_ACTIVE_BAR") || "dynamicglacier"
 
     Variants {
@@ -26,16 +27,25 @@ ShellRoot {
 
             Loader {
                 active: true
-                sourceComponent: root.activeBar === "anomshell"
-                    ? anomshellComp
-                    : dynamicGlacierComp
+                sourceComponent: root.activeBar === "widebar"
+                    ? widebarComp
+                    : root.activeBar === "widebar2"
+                        ? widebar2Comp
+                        : dynamicGlacierComp
             }
         }
     }
 
     Component {
-        id: anomshellComp
-        AnomshellFlat {
+        id: widebarComp
+        Widebar {
+            screen: Quickshell.screens[0]
+        }
+    }
+
+    Component {
+        id: widebar2Comp
+        Widebar2 {
             screen: Quickshell.screens[0]
         }
     }

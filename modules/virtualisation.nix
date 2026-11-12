@@ -9,9 +9,11 @@
   # Bubblewrap (for flatpak sandboxing)
   environment.systemPackages = with pkgs; [ bubblewrap ];
 
-  # Docker
+  # Docker: daemon available but not started at boot (start on demand with
+  # `systemctl start docker`) — removes it from the boot critical chain
   virtualisation.docker = {
     enable = true;
+    enableOnBoot = false;
     package = pkgs.docker;
   };
 }

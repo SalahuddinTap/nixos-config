@@ -17,8 +17,9 @@ rebuild          # = sudo nixos-rebuild switch --flake .#nixos
 ## Bar switching (single mechanism)
 
 ```bash
-bar-island    # or: bar-switch.sh island   -> dynamicglacier
-bar-wide      # or: bar-switch.sh wide     -> anomshell
+bar-island    # or: bar-switch.sh island     -> dynamicglacier
+bar-wide      # or: bar-switch.sh wide       -> widebar
+bar-switch    # rofi menu: island / widebar / widebar2
 ```
 
 Implemented by `~/.local/bin/bar-switch.sh`, which sets `QS_ACTIVE_BAR` and

@@ -16,15 +16,20 @@
   fonts.packages = with pkgs; [
     material-symbols
   ];
-
+  
+  services.upower.enable = true;
+  
   # Desktop packages
   environment.systemPackages = with pkgs; [
     pi-coding-agent
     kdePackages.dolphin
     rofi
     kitty
+    hyprlock
     hyprpaper
     ncpamixer
+    hyprsunset
+    networkmanagerapplet
     pavucontrol
     blueman
     hyprshot

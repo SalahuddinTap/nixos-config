@@ -1,0 +1,7 @@
+{
+  "updatedAt": "2026-11-10T03:53:23.063Z",
+  "command": "init",
+  "model": "mistralai/mistral-large-4-1t-a52b",
+  "status": "interrupted",
+  "language": "en"
+}
