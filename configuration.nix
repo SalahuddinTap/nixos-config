@@ -13,6 +13,12 @@
     ./modules/fan.nix
     ./modules/snapper.nix
     ./modules/hyprlock.nix
+    # Performance modules
+    ./modules/cpu-performance.nix
+    ./modules/memory-performance.nix
+    ./modules/storage-performance.nix
+    ./modules/nvidia-performance.nix
+    ./modules/network-performance.nix
     # NOTE: modules/pi-packages.nix is staged but NOT imported — import it only
     # when activating nix-managed pi packages (see the file header).
   ];

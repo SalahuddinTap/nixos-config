@@ -9,11 +9,4 @@
 
   # Enables the 32-bit graphics libraries Steam needs (fixes glXChooseVisual).
   programs.steam.enable = true;
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
-    nvidiaSettings = true;
-    package = pkgs.linuxPackages_cachyos.nvidiaPackages.stable;
-  };
 }
