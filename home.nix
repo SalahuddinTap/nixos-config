@@ -51,7 +51,6 @@ home.packages = with pkgs; [
     bat
     kdePackages.kdeconnect-kde
     appimage-run
-    bitwarden-desktop
     steam-run # FHS env for PlayTorrio AppImage
   ];
   # fish is the only interactive shell (login shell set in users.nix).
