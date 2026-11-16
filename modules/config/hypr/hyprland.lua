@@ -288,7 +288,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.local/bin/kari-pip.sh"))  -- kari PiP: float+pin corner toggle
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.pseudo())  -- pseudo-tiling moved to Shift+P
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m active -m output -o ~/Pictures/Screenshots --silent || true"))  -- Screenshot the active monitor
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region --raw --silent | satty -f -"))  -- PrtSc: drag-select a region, annotate/crop in satty
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
