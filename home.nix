@@ -49,7 +49,6 @@ home.packages = with pkgs; [
     rofi
     tmux
     bat
-    kdePackages.kdeconnect-kde
     appimage-run
     steam-run # FHS env for PlayTorrio AppImage
   ];
