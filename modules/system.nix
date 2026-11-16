@@ -66,12 +66,4 @@
 
   # System state version (DO NOT CHANGE)
   system.stateVersion = "26.05";
-  #file syncing
-   services.syncthing = {
-    enable = true;
-    user = "salahuddin"; # Replace with your actual username
-    dataDir = "/home/salahuddin"; # Where default configuration/files will live
-    configDir = "/home/salahuddin/.config/syncthing"; 
-    openDefaultPorts = true; # Opens necessary firewall ports (22000 and 21027)
-  };
 }

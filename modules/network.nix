@@ -12,10 +12,6 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  # Firewall: enabled by default (networking.firewall.enable = true is default)
-  # Allowed ports for Syncthing (opened via services.syncthing.openDefaultPorts):
-  # TCP 22000, UDP 21027/22000
-
   # Early OOM killer
   services.earlyoom = {
     enable = true;
