@@ -8,11 +8,13 @@
     ./modules/network.nix
     ./modules/audio.nix
     ./modules/desktop.nix
+    ./modules/input-devices.nix
     ./modules/virtualisation.nix
     ./modules/users.nix
     ./modules/fan.nix
     ./modules/snapper.nix
     ./modules/hyprlock.nix
+    ./modules/battery.nix
     # Performance modules
     ./modules/cpu-performance.nix
     ./modules/memory-performance.nix
