@@ -49,9 +49,6 @@ home.packages = with pkgs; [
     rofi
     tmux
     bat
-    protonmail-desktop
-    proton-pass
-    proton-pass-cli
     kdePackages.kdeconnect-kde
     appimage-run
     bitwarden-desktop
