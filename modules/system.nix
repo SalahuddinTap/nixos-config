@@ -30,16 +30,16 @@
   nix.nixPath = [ "nixos-config=/etc/nixos/configuration.nix" ];
   nixpkgs.config.allowUnfree = true;
 
-  # Keep only the 10 newest system generations on every switch/boot, then gc
-  # away the store paths the deleted generations referenced
-  system.activationScripts.nixos-trim-generations = ''
-    cd /nix/var/nix/profiles
-    ls -1vd system-*-link | head -n -10 | xargs -r rm -f --
-    ${pkgs.nix}/bin/nix-collect-garbage >/dev/null 2>&1 || true
-  '';
+  # Nix garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 
   # Boot loader (systemd-boot EFI)
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.timeout = 5;
