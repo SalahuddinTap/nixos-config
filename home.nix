@@ -87,6 +87,8 @@ home.packages = with pkgs; [
       "$HOME/.local/bin"
     ];
     home.sessionVariables = {
+      # Electron apps (Vesktop/Discord) run on Wayland instead of XWayland
+      NIXOS_OZONE_WL = "1";
       QML2_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml";
       NIXPKGS_QT6_QML_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml";
       # CUDA + NVML paths for compiling GPU programs (temp-converter etc.)
