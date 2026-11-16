@@ -139,7 +139,7 @@ Scope {
                                         text: {
                                             const name = notifCard.modelData.appName.toLowerCase();
                                             if (notifCard.modelData.urgency === NotificationUrgency.Critical) return "󰀦";
-                                            if (name.includes("discord"))  return "󰙯";
+                                            if (name.includes("discord") || name.includes("vesktop"))  return "󰙯";
                                             if (name.includes("firefox"))  return "󰈹";
                                             if (name.includes("chrome"))   return "";
                                             if (name.includes("telegram")) return "";

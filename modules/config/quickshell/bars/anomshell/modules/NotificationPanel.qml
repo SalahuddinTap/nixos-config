@@ -28,7 +28,7 @@ Item {
 
     function appIcon(name) {
         const map = {
-            "firefox": "󰈹", "chromium": "󰊯", "discord": "󰙯",
+            "firefox": "󰈹", "chromium": "󰊯", "discord": "󰙯", "vesktop": "󰙯",
             "spotify": "󰓇", "telegram": "󰔁", "code": "󰨞",
             "vscode": "󰨞", "alacritty": "󰆍", "kitty": "󰆍",
             "steam": "󰓓", "vlc": "󰕼", "mpv": "󰎁",
