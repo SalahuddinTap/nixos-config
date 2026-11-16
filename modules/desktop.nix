@@ -33,6 +33,7 @@
     pwvucontrol
     overskride
     hyprshot
+    satty
     nerd-fonts.jetbrains-mono
   ];
 }
