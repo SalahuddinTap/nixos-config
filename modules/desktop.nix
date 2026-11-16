@@ -30,8 +30,8 @@
     ncpamixer
     hyprsunset
     networkmanagerapplet
-    pavucontrol
-    blueman
+    pwvucontrol
+    overskride
     hyprshot
     nerd-fonts.jetbrains-mono
   ];
