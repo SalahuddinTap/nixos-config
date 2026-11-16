@@ -25,7 +25,6 @@ home.packages = with pkgs; [
     rust-analyzer
     cargo
     rustc
-    microsoft-edge
     wl-clipboard
     cliphist
     mpv
