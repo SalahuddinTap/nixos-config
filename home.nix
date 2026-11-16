@@ -14,6 +14,7 @@ in
 
 home.packages = with pkgs; [
     discord
+    vesktop
     fish
     git
     yazi
