@@ -37,6 +37,7 @@ in
     protonmail-desktop
     tree-sitter
     microsoft-edge
+    librewolf-bin-unwrapped
     unzip
     luarocks
     jq
