@@ -135,6 +135,15 @@
       force = true;
     };
 
+    # Sober (Roblox) launcher that forces the NVIDIA dGPU inside the flatpak
+    # sandbox (VK_ICD + libvulkan.so alias; needs the flatpak override from
+    # README — applied manually once per machine)
+    ".local/bin/sober-nvidia" = {
+      source = ./config/scripts/sober-nvidia;
+      executable = true;
+      force = true;
+    };
+
     # Claude Desktop .desktop entry (uses wrapper with X11 flags for NVIDIA Wayland fix)
     ".local/share/applications/claude-desktop.desktop" = {
       text = ''

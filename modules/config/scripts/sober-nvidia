@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# Launch Sober with the game engine on the NVIDIA dGPU (NixOS + flatpak).
+# Does NOT kill an already-running Sober instance (single-instance app anyway).
+#
+# Needs the sandbox to see the NixOS driver dir (already applied):
+#   flatpak override --user --filesystem=/run/opengl-driver:ro \
+#     --filesystem=/run/opengl-driver-32:ro --filesystem=/nix/store:ro \
+#     org.vinegarhq.Sober
+#
+# flatpak run scrubs exported VK_*/LD_LIBRARY_PATH vars, so they must be
+# passed via --env=. Verified result: engine logs
+#   "GL Renderer: NVIDIA GeForce RTX 3050 Laptop GPU" and nvidia-smi shows
+#   the sober process using the dGPU.
+set -u
+
+export GDK_BACKEND=x11
+export QT_QPA_PLATFORM=xcb
+export DISPLAY=:0
+
+setsid flatpak run \
+  --env=VK_ICD_FILENAMES=/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json \
+  --env=VK_DRIVER_FILES=/run/opengl-driver/share/vulkan/icd.d/nvidia_icd.json \
+  --env=LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/GL/lib:/run/opengl-driver/lib \
+  --env=__NV_PRIME_RENDER_OFFLOAD=1 \
+  --env=__GLX_VENDOR_LIBRARY_NAME=nvidia \
+  --branch=stable --arch=x86_64 --command=sober --file-forwarding \
+  org.vinegarhq.Sober -- @@u "$@" @@ >/dev/null 2>&1 &
+
+# The runtime ships only libvulkan.so.1 but the engine dlopens libvulkan.so.
+# /usr/lib/x86_64-linux-gnu/GL is a per-sandbox tmpfs shared with Sober's inner
+# container — drop the alias symlink in through /proc/<pid>/root. WAIT for the
+# sandbox to come up (a fixed sleep races on slow boots and silently skips the
+# link, which makes the game fall back to the Intel iGPU), then verify.
+for i in $(seq 1 50); do
+  pid=$(pgrep -x sober | head -1)
+  [ -z "$pid" ] && pid=$(pgrep -f 'bwrap --args' | head -1)
+  g=/proc/$pid/root/usr/lib/x86_64-linux-gnu/GL
+  if [ -n "$pid" ] && [ -d "$g" ]; then
+    mkdir -p "$g/lib" 2>/dev/null
+    ln -sf /usr/lib/x86_64-linux-gnu/libvulkan.so.1 "$g/lib/libvulkan.so" 2>/dev/null
+    if [ -e "$g/lib/libvulkan.so" ]; then
+      echo "sober-nvidia: libvulkan.so alias created (pid $pid)"
+      exit 0
+    fi
+  fi
+  sleep 0.3
+done
+echo "sober-nvidia: WARNING — libvulkan.so alias not created; game will fall back to iGPU" >&2
+exit 1
