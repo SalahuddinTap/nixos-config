@@ -37,8 +37,10 @@ for i in $(seq 1 50); do
   g=/proc/$pid/root/usr/lib/x86_64-linux-gnu/GL
   if [ -n "$pid" ] && [ -d "$g" ]; then
     mkdir -p "$g/lib" 2>/dev/null
-    ln -sf /usr/lib/x86_64-linux-gnu/libvulkan.so.1 "$g/lib/libvulkan.so" 2>/dev/null
-    if [ -e "$g/lib/libvulkan.so" ]; then
+    # Relative symlink so it resolves both inside sandbox AND when checked via /proc/$pid/root
+    ln -sfT ../../libvulkan.so.1 "$g/lib/libvulkan.so" 2>/dev/null
+    # Check symlink exists (don't follow - target is sandbox-relative)
+    if [ -L "$g/lib/libvulkan.so" ]; then
       echo "sober-nvidia: libvulkan.so alias created (pid $pid)"
       exit 0
     fi
