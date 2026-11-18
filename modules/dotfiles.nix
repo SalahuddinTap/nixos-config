@@ -67,6 +67,11 @@
       executable = true;
       force = true;
     };
+    ".local/bin/install-flatpaks.sh" = {
+      source = ./config/scripts/install-flatpaks.sh;
+      executable = true;
+      force = true;
+    };
     ".config/fish/conf.d/npm-global.fish" = {
       source = ./config/fish/conf.d/npm-global.fish;
       force = true;
