@@ -23,7 +23,7 @@
   environment.systemPackages = with pkgs; [
     pi-coding-agent
     kdePackages.dolphin
-    rofi
+    # rofi lives in home.nix home.packages (user-launched via keybinds)
     kitty
     hyprlock
     hyprpaper

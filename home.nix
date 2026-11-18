@@ -117,5 +117,6 @@ in
     LD_LIBRARY_PATH = "/run/opengl/driver/lib";
   };
 
-  home.stateVersion = "26.11";
+  # Keep in sync with system.stateVersion (modules/system.nix)
+  home.stateVersion = "26.05";
 }
