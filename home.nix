@@ -12,7 +12,7 @@ in
   home.username = "salahuddin";
   home.homeDirectory = "/home/salahuddin";
 
-home.packages = with pkgs; [
+  home.packages = with pkgs; [
     discord
     vesktop
     fish
@@ -31,7 +31,9 @@ home.packages = with pkgs; [
     gcc
     fd
     ripgrep
+    protonmail-desktop
     tree-sitter
+    microsoft-edge
     unzip
     luarocks
     jq
@@ -50,8 +52,24 @@ home.packages = with pkgs; [
     tmux
     bat
     appimage-run
-    steam-run # FHS env for PlayTorrio AppImage
+    steam-run
+    grim
+    slurp
+    wf-recorder
+    brightnessctl
+    playerctl
+    wlogout
+    libnotify
+    # Add Claude Desktop from the flake input's packages for your system architecture:
+    # Wrapper to force Electron X11 backend (fixes Wayland+NVIDIA crash)
+    (pkgs.writeShellScriptBin "claude-desktop" ''
+      exec ${inputs.claude-desktop-nix-flake.packages.${pkgs.system}.default}/bin/claude-desktop \
+        --ozone-platform=x11 \
+        --enable-features=UseOzonePlatform \
+        "$@"
+    '')
   ];
+
   # fish is the only interactive shell (login shell set in users.nix).
   # bash remains only as /bin/sh for system scripts — no HM bash config.
   # Fish-specific environment initialization
@@ -59,8 +77,8 @@ home.packages = with pkgs; [
   # libnvidia-ml.so at runtime via /run/opengl-driver/lib on NixOS.
   programs.fish.shellInit = ''
     set -gx C_INCLUDE_PATH "${pkgs.linuxPackages_cachyos.nvidiaPackages.stable}/include" "${pkgs.cudatoolkit}/include" $C_INCLUDE_PATH
-    set -gx LIBRARY_PATH "/run/opengl-driver/lib" "${pkgs.cudatoolkit}/lib" $LIBRARY_PATH
-    set -gx LD_LIBRARY_PATH "/run/opengl-driver/lib" $LD_LIBRARY_PATH
+    set -gx LIBRARY_PATH "/run/opengl/driver/lib" "${pkgs.cudatoolkit}/lib" $LIBRARY_PATH
+    set -gx LD_LIBRARY_PATH "/run/opengl/driver/lib" $LD_LIBRARY_PATH
   '' ;
   programs.fish = {
     enable = true;
@@ -83,19 +101,21 @@ home.packages = with pkgs; [
     theme = spicePkgs.themes.sleek;
     colorScheme = "VantaBlack";
   };
+
   home.sessionPath = [
-      "$HOME/.local/bin"
-    ];
-    home.sessionVariables = {
-      # Electron apps (Vesktop/Discord) run on Wayland instead of XWayland
-      NIXOS_OZONE_WL = "1";
-      QML2_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml";
-      NIXPKGS_QT6_QML_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml";
-      # CUDA + NVML paths for compiling GPU programs (temp-converter etc.)
-      C_INCLUDE_PATH = "${pkgs.linuxPackages_cachyos.nvidiaPackages.stable}/include:${pkgs.cudatoolkit}/include";
-      LIBRARY_PATH = "/run/opengl-driver/lib:${pkgs.cudatoolkit}/lib";
-      LD_LIBRARY_PATH = "/run/opengl-driver/lib";
-    };
+    "$HOME/.local/bin"
+  ];
+
+  home.sessionVariables = {
+    # Electron apps (Vesktop/Discord) run on Wayland instead of XWayland
+    NIXOS_OZONE_WL = "1";
+    QML2_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml";
+    NIXPKGS_QT6_QML_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml";
+    # CUDA + NVML paths for compiling GPU programs (temp-converter etc.)
+    C_INCLUDE_PATH = "${pkgs.linuxPackages_cachyos.nvidiaPackages.stable}/include:${pkgs.cudatoolkit}/include";
+    LIBRARY_PATH = "/run/opengl/driver/lib:${pkgs.cudatoolkit}/lib";
+    LD_LIBRARY_PATH = "/run/opengl/driver/lib";
+  };
 
   home.stateVersion = "26.11";
 }

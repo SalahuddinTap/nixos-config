@@ -19,15 +19,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Declarative pi package management (pi.dev catalog as nix derivations).
-    # Activate in modules/pi-packages.nix (set enable + packages), then rebuild.
     pi-packages = {
       url = "github:Leoguy77/pi-packages.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    claude-desktop-nix-flake.url = "github:poeck/claude-desktop-nix-flake";
   };
 
-  outputs = { self, nixpkgs, nyx, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nyx, home-manager, claude-desktop-nix-flake, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };

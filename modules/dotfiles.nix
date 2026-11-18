@@ -84,6 +84,35 @@
       force = true;
     };
 
+    # Claude Desktop .desktop entry (uses wrapper with X11 flags for NVIDIA Wayland fix)
+    ".local/share/applications/claude-desktop.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Name=Claude
+        Comment=Desktop application for Claude.ai
+        GenericName=AI Assistant
+        Keywords=AI;Chat;Assistant;Claude;Code;LLM;
+        Exec=claude-desktop %U
+        Icon=claude-desktop
+        Type=Application
+        StartupNotify=true
+        StartupWMClass=com.anthropic.Claude
+        SingleMainWindow=true
+        Categories=Utility;Development;
+        MimeType=x-scheme-handler/claude;
+        Actions=NewChat;NewCode;
+
+        [Desktop Action NewChat]
+        Name=New Chat
+        Exec=claude-desktop "claude://claude.ai/new?surface=chat&source=desktop_action"
+
+        [Desktop Action NewCode]
+        Name=New Claude Code Session
+        Exec=claude-desktop "claude://code/new?source=desktop_action"
+      '';
+      force = true;
+    };
+
     # Fan control + PC mount helpers
     ".local/bin/fan" = {
       source = ./config/scripts/fan;
