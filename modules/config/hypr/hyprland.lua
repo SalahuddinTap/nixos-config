@@ -50,8 +50,9 @@ local menu        = "rofi -show drun"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
- hl.on("hyprland.start", function () 
+ hl.on("hyprland.start", function ()
    hl.exec_cmd("hyprpaper")
+   hl.exec_cmd('quickshell -c "$HOME/.config/quickshell"')  -- repo-managed shell (bars/, osd, notifications, launcher); switch bars with bar-switch.sh
    hl.exec_cmd("wl-paste --type text --watch cliphist store")
    hl.exec_cmd("wl-paste --type image --watch cliphist store")
  end)
