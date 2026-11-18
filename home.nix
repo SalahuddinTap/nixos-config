@@ -17,6 +17,9 @@ in
     vesktop
     fish
     git
+    gh
+    curl
+    nano
     yazi
     quickshell
     neovim
@@ -89,7 +92,8 @@ in
       rebuild = "sudo nixos-rebuild switch --flake .#nixos";
       rebuild-update = "cd ~/projects/nixos-config && nix flake update && sudo nixos-rebuild switch --flake .#nixos && sudo nix-collect-garbage --delete-older-than 7d && nix-store --optimise";
       bar-island = "bar-switch.sh island";
-      bar-wide = "bar-switch.sh wide";
+      bar-wide = "bar-switch.sh widebar";
+      bar-tripathi = "bar-switch.sh tripathi";
     };
   };
 

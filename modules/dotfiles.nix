@@ -27,6 +27,13 @@
       force = true;
     };
 
+    # Quickshell tripathi bar variant (switch with: bar-switch.sh tripathi)
+    ".config/quickshell-tripathi" = {
+      source = ./config/quickshell-tripathi;
+      recursive = true;
+      force = true;
+    };
+
     # Neovim (LazyVim) — recursive
     ".config/nvim" = {
       source = ./config/nvim;
@@ -39,6 +46,45 @@
 
     ".config/dolphinrc" = {
       source = ./config/dolphinrc;
+      force = true;
+    };
+
+    # Hand-managed configs captured into the repo
+    ".gitconfig" = {
+      source = ./config/gitconfig;
+      force = true;
+    };
+    ".ncpamixer.conf" = {
+      source = ./config/ncpamixer.conf;
+      force = true;
+    };
+    ".backup_exclude" = {
+      source = ./config/backup_exclude;
+      force = true;
+    };
+    "backup_projects.sh" = {
+      source = ./config/scripts/backup_projects.sh;
+      executable = true;
+      force = true;
+    };
+    ".config/fish/conf.d/npm-global.fish" = {
+      source = ./config/fish/conf.d/npm-global.fish;
+      force = true;
+    };
+    ".config/hypr/sound/eq.conf" = {
+      source = ./config/hypr/sound/eq.conf;
+      force = true;
+    };
+    ".config/rofi/bar-menu.rasi" = {
+      source = ./config/rofi/bar-menu.rasi;
+      force = true;
+    };
+    ".config/wireplumber/wireplumber.conf.d/51-bluez-a2dp-only.conf" = {
+      source = ./config/wireplumber/wireplumber.conf.d/51-bluez-a2dp-only.conf;
+      force = true;
+    };
+    ".config/qmd/index.yml" = {
+      source = ./config/qmd/index.yml;
       force = true;
     };
 

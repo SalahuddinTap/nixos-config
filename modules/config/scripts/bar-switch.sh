@@ -1,36 +1,52 @@
 #!/usr/bin/env bash
-# Switch the Quickshell bar (single switcher — uses QS_ACTIVE_BAR env + quickshell from PATH).
-# Usage: bar-switch.sh [island|wide|widebar2|status]
-set -u
+# Rofi menu for Quickshell bars + CLI args.
+# Usage: bar-switch.sh [island|widebar|widebar2|tripathi] (no args = rofi menu)
+set -euo pipefail
 
-CONFIG="$HOME/.config/quickshell"
-# Match the full cmdline: on NixOS the binary is wrapped, so the process name
-# is ".quickshell-wra" and `pkill -x quickshell` never matches.
-QS_PROC="quickshell -c $CONFIG"
+ROFI_CONFIG="$HOME/.config/rofi/bar-menu.rasi"
+MAIN_CONFIG="$HOME/.config/quickshell"
+TRIPATHI_CONFIG="$HOME/.config/quickshell-tripathi"
 
-case "${1:-}" in
-  island)   BAR=dynamicglacier ;;
-  wide)     BAR=widebar ;;
-  widebar2) BAR=widebar2 ;;
-  status)
-    if pgrep -f "$QS_PROC" >/dev/null 2>&1; then
-      echo "quickshell running (QS_ACTIVE_BAR at launch decides the bar)"
-    else
-      echo "quickshell not running"
-    fi
-    exit 0
-    ;;
-  "")
-    echo "Usage: $0 [island|wide|widebar2|status]"
-    exit 1
-    ;;
-  *)
-    echo "Unknown bar: $1 (use island, wide or widebar2)"
-    exit 1
-    ;;
+# If argument provided, use it directly; otherwise show rofi menu
+if [ -n "${1:-}" ]; then
+choice="$1"
+else
+choice="$(printf '%s\n' \
+"island" \
+"widebar" \
+"widebar2" \
+"tripathi" \
+| rofi -dmenu -config "$ROFI_CONFIG" -p "bar")"
+fi
+
+[ -z "$choice" ] && exit 0
+
+# Kill existing quickshell instances
+pkill -9 -f quickshell 2>/dev/null || true
+# Wait for process to actually die
+while pgrep -f quickshell >/dev/null 2>&1; do
+sleep 0.1
+done
+
+case "$choice" in
+island)
+QS_ACTIVE_BAR=dynamicglacier quickshell -c "$MAIN_CONFIG" >/dev/null 2>&1 &
+echo "Switched to island (dynamicglacier)"
+;;
+widebar)
+QS_ACTIVE_BAR=widebar quickshell -c "$MAIN_CONFIG" >/dev/null 2>&1 &
+echo "Switched to widebar"
+;;
+widebar2)
+QS_ACTIVE_BAR=widebar2 quickshell -c "$MAIN_CONFIG" >/dev/null 2>&1 &
+echo "Switched to widebar2"
+;;
+tripathi)
+quickshell -c "$TRIPATHI_CONFIG" >/dev/null 2>&1 &
+echo "Switched to tripathi (tripathiji1312/quickshell)"
+;;
+*)
+echo "Unknown option: $choice (use island, widebar, widebar2 or tripathi)"
+exit 1
+;;
 esac
-
-pkill -9 -f "$QS_PROC" 2>/dev/null
-sleep 0.5
-QS_ACTIVE_BAR="$BAR" quickshell -c "$CONFIG" >/dev/null 2>&1 &
-echo "Switched to $1 ($BAR)"
