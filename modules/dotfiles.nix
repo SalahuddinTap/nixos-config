@@ -144,6 +144,23 @@
       force = true;
     };
 
+    # LibreWolf .desktop — librewolf-bin-unwrapped ships no desktop file,
+    # so without this rofi -show drun (SUPER+R) can't see it
+    ".local/share/applications/librewolf.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Name=LibreWolf
+        Comment=Private web browser
+        Exec=librewolf %u
+        Icon=librewolf
+        Type=Application
+        StartupNotify=true
+        Categories=Network;WebBrowser;
+        MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+      '';
+      force = true;
+    };
+
     # Claude Desktop .desktop entry (uses wrapper with X11 flags for NVIDIA Wayland fix)
     ".local/share/applications/claude-desktop.desktop" = {
       text = ''
