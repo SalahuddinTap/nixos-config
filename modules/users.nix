@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Register fish in /etc/shells so graphical sessions (SDDM/systemd) export

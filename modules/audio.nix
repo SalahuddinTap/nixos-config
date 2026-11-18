@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   # PipeWire (required by Hyprland) with Bluetooth support

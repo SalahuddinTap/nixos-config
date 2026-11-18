@@ -27,7 +27,7 @@
     claude-desktop-nix-flake.url = "github:poeck/claude-desktop-nix-flake";
   };
 
-  outputs = { self, nixpkgs, nyx, home-manager, claude-desktop-nix-flake, ... }@inputs: {
+  outputs = { nixpkgs, nyx, home-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };

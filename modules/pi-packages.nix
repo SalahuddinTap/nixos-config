@@ -22,7 +22,7 @@
 #   @juicesharp/rpiv-todo @narumitw/pi-worktree pi-code @narumitw/pi-usage pi-rewind
 #   pi-ide-context @quintinshaw/pi-dynamic-workflows
 
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.pi-packages.nixosModules.default ];
 

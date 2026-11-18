@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   # Home-manager dotfiles — symlinks configs from this repo into ~/.config

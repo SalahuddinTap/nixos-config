@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   # Raw EC access for fan control on the MSI GF63 Thin 11UC.
