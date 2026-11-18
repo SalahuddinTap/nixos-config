@@ -64,6 +64,11 @@ SUPER+R rofi · SUPER+V float · SUPER+P kari PiP (mpv) · SUPER+SHIFT+V clipboa
 6. Install the flatpaks (imperative — one-shot script from the repo):
    `~/.local/bin/install-flatpaks.sh`
    (Zen/Sober/Vinegar system-wide, Stremio user-level.)
+   Then grant Sober's sandbox access to the NVIDIA driver (once per machine):
+   `flatpak override --user --filesystem=/run/opengl-driver:ro --filesystem=/run/opengl-driver-32:ro --filesystem=/nix/store:ro org.vinegarhq.Sober`
+   Launch Roblox via `sober-nvidia` (NOT plain `flatpak run`) so the game uses
+   the dGPU — it sets the Vulkan ICD and drops the `libvulkan.so` alias into
+   the sandbox (without it the game silently falls back to the Intel iGPU).
 7. Log in. Quickshell autostarts from the repo config via hyprland
    (`hyprland.start`); switch bars with `bar-island` / `bar-wide` /
    `bar-tripathi` or the rofi menu: `bar-switch.sh` (no args). Bars:
