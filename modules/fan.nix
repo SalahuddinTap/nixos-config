@@ -10,8 +10,8 @@
     options ec_sys write_support=1
   '';
 
-  # Applies the fan profile stored in ~/projects/cmds/boot/profile at boot.
-  # Managed with: ~/projects/cmds/boot/set-boot.sh {max|middle|silent|off|status}
+  # Applies the fan profile stored in ~/.local/bin/boot/profile at boot.
+  # Managed with: ~/.local/bin/boot/set-boot.sh {max|middle|silent|off|status}
   systemd.services.msi-fan-boot = {
     description = "Apply MSI fan profile at boot";
     after = [ "multi-user.target" ];
@@ -21,7 +21,7 @@
       RemainAfterExit = true;
       # systemd services have a minimal PATH on NixOS (no /usr/bin), so use
       # store paths explicitly and give the script its runtime tools.
-      ExecStart = "${pkgs.bash}/bin/bash /home/salahuddin/projects/cmds/boot/apply-boot-profile.sh";
+      ExecStart = "${pkgs.bash}/bin/bash /home/salahuddin/.local/bin/boot/apply-boot-profile.sh";
       Path = [
         "${pkgs.bash}/bin"
         "${pkgs.coreutils}/bin"

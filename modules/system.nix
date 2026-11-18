@@ -18,10 +18,10 @@
         { command = "/nix/var/nix/profiles/default/bin/home-manager"; options = [ "NOPASSWD" ]; }
         { command = "/run/current-system/sw/bin/switch-to-configuration"; options = [ "NOPASSWD" ]; }
         # Fan control scripts — lets the rofi power menu switch fans without a password prompt
-        { command = "/home/salahuddin/projects/cmds/fan.sh"; options = [ "NOPASSWD" ]; }
-        { command = "/home/salahuddin/projects/cmds/fan-max.sh"; options = [ "NOPASSWD" ]; }
-        { command = "/home/salahuddin/projects/cmds/fan-middle.sh"; options = [ "NOPASSWD" ]; }
-        { command = "/home/salahuddin/projects/cmds/fan-silent.sh"; options = [ "NOPASSWD" ]; }
+        { command = "/home/salahuddin/.local/bin/fan"; options = [ "NOPASSWD" ]; }
+        { command = "/home/salahuddin/.local/bin/fan-max.sh"; options = [ "NOPASSWD" ]; }
+        { command = "/home/salahuddin/.local/bin/fan-middle.sh"; options = [ "NOPASSWD" ]; }
+        { command = "/home/salahuddin/.local/bin/fan-silent.sh"; options = [ "NOPASSWD" ]; }
       ];
     }
   ];
@@ -48,7 +48,7 @@
   zramSwap.enable = true;
 
   # Switchable CPU power profiles (power-saver / balanced / performance) via
-  # `powerprofilesctl set <profile>` — driven from ~/projects/cmds/power-menu.sh.
+  # `powerprofilesctl set <profile>` — driven from ~/.local/bin/power-menu.sh.
   # thermald stays on as a safety net against overheating.
   services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;            # Intel thermal throttling control

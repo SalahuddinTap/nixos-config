@@ -113,9 +113,41 @@
       force = true;
     };
 
-    # Fan control + PC mount helpers
+    # Fan control + PC mount helpers (MSI GF63 EC fan scripts + power menu)
     ".local/bin/fan" = {
       source = ./config/scripts/fan;
+      executable = true;
+      force = true;
+    };
+    ".local/bin/fan-lib.sh" = {
+      source = ./config/scripts/fan-lib.sh;
+      executable = true;
+      force = true;
+    };
+    ".local/bin/fan-max.sh" = {
+      source = ./config/scripts/fan-max.sh;
+      executable = true;
+      force = true;
+    };
+    ".local/bin/fan-middle.sh" = {
+      source = ./config/scripts/fan-middle.sh;
+      executable = true;
+      force = true;
+    };
+    ".local/bin/fan-silent.sh" = {
+      source = ./config/scripts/fan-silent.sh;
+      executable = true;
+      force = true;
+    };
+    ".local/bin/power-menu.sh" = {
+      source = ./config/scripts/power-menu.sh;
+      executable = true;
+      force = true;
+    };
+    # Boot fan profile (read by msi-fan-boot.service via apply-boot-profile.sh)
+    ".local/bin/boot" = {
+      source = ./config/scripts/boot;
+      recursive = true;
       executable = true;
       force = true;
     };
