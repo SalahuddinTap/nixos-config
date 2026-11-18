@@ -62,6 +62,12 @@
       source = ./config/backup_exclude;
       force = true;
     };
+    # Hyprland's own mimeapps list — this one overrides ~/.config/mimeapps.list
+    # for Hyprland-launched apps, so the default browser must be set here too
+    ".config/hyprland-mimeapps.list" = {
+      source = ./config/hyprland-mimeapps.list;
+      force = true;
+    };
     "backup_projects.sh" = {
       source = ./config/scripts/backup_projects.sh;
       executable = true;
