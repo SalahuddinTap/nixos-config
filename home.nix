@@ -14,8 +14,16 @@ in
 
   home.packages = with pkgs; [
     discord
+    swaynotificationcenter
+    hyprpicker
+    zoxide
     vesktop
+    starship
     fish
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    maple-mono.NF
+    nerd-fonts.geist-mono
     git
     gh
     curl
@@ -25,6 +33,7 @@ in
     neovim
     wget
     fastfetch
+    fetch
     rust-analyzer
     cargo
     rustc
@@ -37,6 +46,7 @@ in
     protonmail-desktop
     tree-sitter
     microsoft-edge
+    obsidian
     librewolf-bin-unwrapped
     unzip
     luarocks
@@ -73,6 +83,12 @@ in
         "$@"
     '')
   ];
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    # Optional: replaces `cd` with `z` so you don't even have to change muscle memory
+    options = [ "--cmd z" ];
+  };
 
   # fish is the only interactive shell (login shell set in users.nix).
   # bash remains only as /bin/sh for system scripts — no HM bash config.
@@ -83,6 +99,8 @@ in
     set -gx C_INCLUDE_PATH "${pkgs.linuxPackages_cachyos.nvidiaPackages.stable}/include" "${pkgs.cudatoolkit}/include" $C_INCLUDE_PATH
     set -gx LIBRARY_PATH "/run/opengl/driver/lib" "${pkgs.cudatoolkit}/lib" $LIBRARY_PATH
     set -gx LD_LIBRARY_PATH "/run/opengl/driver/lib" $LD_LIBRARY_PATH
+    starship init fish | source
+    fish_config theme choose snow-day
   '' ;
   programs.fish = {
     enable = true;
@@ -90,13 +108,15 @@ in
       ls = "eza";
       ll = "eza -la";
       ff = "fastfetch";
-      rebuild = "sudo nixos-rebuild switch --flake .#nixos";
+      rebuild = "cd ~/projects/nixos-config && sudo nixos-rebuild switch --flake .#nixos";
       rebuild-update = "cd ~/projects/nixos-config && nix flake update && sudo nixos-rebuild switch --flake .#nixos && sudo nix-collect-garbage --delete-older-than 7d && nix-store --optimise";
       bar-island = "bar-switch.sh island";
       bar-wide = "bar-switch.sh widebar";
-      bar-tripathi = "bar-switch.sh tripathi";
+      bar-tripathi = "bar-switch.sh tripath";
     };
   };
+  fonts.fontconfig.enable = true;
+  services.swaync.enable = true;
 
   # Declarative Spicetify (spicetify-nix): theme and extensions applied on rebuild
   programs.spicetify = {

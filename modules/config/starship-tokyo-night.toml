@@ -1,0 +1,117 @@
+# Starship config — Tokyo Night theme
+# ~/.config/starship.toml (managed by home-manager)
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+$character"""
+
+[username]
+show_always = true
+style_user = "bold #7aa2f7"
+style_root = "bold #f7768e"
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = false
+format = "@[$hostname](#7aa2f7) "
+disabled = false
+
+[directory]
+style = "#9ece6a"
+format = "[$path]($style) "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch](#bb9af7) "
+style = "#bb9af7"
+
+[git_status]
+format = '([$all_status$ahead_behind](#e0af68) )'
+style = "#e0af68"
+conflicted = "="
+ahead = "↑"
+behind = "↓"
+diverged = "↕"
+untracked = "?"
+stashed = "$"
+modified = "!"
+deleted = "✘"
+
+[cmd_duration]
+min_time = 2000
+format = "[$duration](#565f89) "
+style = "#565f89"
+show_milliseconds = true
+
+[character]
+success_symbol = "[>](#9ece6a) "
+error_symbol = "[>](#f7768e) "
+vicmd_symbol = "[<](#7aa2f7) "
+
+# Disable modules we don't need
+[nodejs]
+disabled = true
+[python]
+disabled = true
+[rust]
+disabled = true
+[golang]
+disabled = true
+[docker_context]
+disabled = true
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+[azure]
+disabled = true
+[kubernetes]
+disabled = true
+[terraform]
+disabled = true
+[nix_shell]
+disabled = true
+[conda]
+disabled = true
+[dotnet]
+disabled = true
+[java]
+disabled = true
+[php]
+disabled = true
+[ruby]
+disabled = true
+[swift]
+disabled = true
+[zig]
+disabled = true
+[lua]
+disabled = true
+[perl]
+disabled = true
+[haskell]
+disabled = true
+[elm]
+disabled = true
+[erlang]
+disabled = true
+[fennel]
+disabled = true
+[gleam]
+disabled = true
+[julia]
+disabled = true
+[nim]
+disabled = true
+[bun]
+disabled = true
+[deno]
+disabled = true

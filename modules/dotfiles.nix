@@ -20,6 +20,11 @@
       force = true;
     };
 
+    ".config/starship.toml" = {
+      source = ./config/starship.toml;
+      force = true;
+    };
+
     # Quickshell — recursive copy of entire directory tree
     ".config/quickshell" = {
       source = ./config/quickshell;

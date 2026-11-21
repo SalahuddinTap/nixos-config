@@ -37,9 +37,8 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local fileManager = "yazi"
 local menu        = "rofi -show drun"
-
 
 -------------------
 ---- AUTOSTART ----
@@ -55,6 +54,7 @@ local menu        = "rofi -show drun"
    hl.exec_cmd('quickshell -c "$HOME/.config/quickshell"')  -- repo-managed shell (bars/, osd, notifications, launcher); switch bars with bar-switch.sh
    hl.exec_cmd("wl-paste --type text --watch cliphist store")
    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+   hl.exec_cmd("hyprsunset -t 2500&")
  end)
 
 
